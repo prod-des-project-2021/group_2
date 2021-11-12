@@ -1,9 +1,11 @@
-const Button = (props) => {
+import { Button } from '@mui/material'
+
+const CustomButton = (props) => {
   return (
-    <button type={props.type} onClick={props.onClick}>
+    <Button type={props.type} onClick={props.onClick}>
       {props.children}
-    </button>
+    </Button>
   )
 }
 
-export default Button
+export default CustomButton
