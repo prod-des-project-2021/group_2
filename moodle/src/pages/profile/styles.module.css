@@ -1,0 +1,50 @@
+.name {
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.wrapper_button [class*='MuiButton-root'] {
+  border: 1px solid #f7931e;
+  color: #000;
+}
+
+.wrapper_button [class*='MuiButton-root']:hover {
+  background-color: #f7cfa0;
+}
+
+.wrapper_link {
+  margin-top: 40px;
+}
+
+.container_info {
+  margin: 20px auto;
+  padding: 0 24px;
+}
+
+.wrapper_info {
+  margin: 40px 0;
+}
+
+.title {
+  font-size: 1.2rem;
+  color: #373a3c;
+}
+
+.info_title {
+  font-weight: 600;
+}
+
+.email {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.wrapper_view_code {
+  margin: 16px 0;
+}
+
+.wrapper_view_code [class*='MuiButton-root'] {
+  border: 1px solid #f7931e;
+  background: #f7931e;
+  color: #000;
+}
