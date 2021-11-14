@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-import Dashboard from './pages/Dashboard'
-import Profile from './pages/profile/Profile'
+import { Dashboard, Profile } from './pages'
+import { Footer } from './UI'
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
         <Route path='/' element={<Dashboard />} />
         <Route path='profile' element={<Profile />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   )
 }
