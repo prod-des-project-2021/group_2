@@ -1,2 +1,2 @@
 // HEADER
-export const LOGO_OAMK = '../assets/oamk_logo-removebg-preview.png'
+export { default as LOGO_OAMK } from '../assets/oamk_logo-removebg-preview.png'

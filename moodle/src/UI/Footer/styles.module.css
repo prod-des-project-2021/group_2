@@ -1,0 +1,13 @@
+.container {
+  background-color: #565656;
+  padding: 5rem;
+}
+
+.link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.image {
+  height: 90px;
+}
