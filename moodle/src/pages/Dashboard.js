@@ -1,8 +1,8 @@
 import React from 'react'
-import DashboardItems from '../components/DashboardItems'
+import { CourseItem } from '../components'
 
 const Dashboard = () => {
-  return <DashboardItems/>
+  return <CourseItem />
 }
 
 export default Dashboard
