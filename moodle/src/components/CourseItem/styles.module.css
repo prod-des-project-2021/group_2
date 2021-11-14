@@ -1,0 +1,5 @@
+.wrapper_icon {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
