@@ -1,5 +1,5 @@
 import React from 'react'
-import { CourseItem } from '../components'
+import { CourseItem } from '../../components'
 
 const Dashboard = () => {
   return <CourseItem />
