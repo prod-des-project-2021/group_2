@@ -1,0 +1,30 @@
+.login_container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10rem;
+}
+
+.input_wrapper {
+  margin: 10px 0;
+}
+
+.checkbox {
+  color: rgba(247, 147, 30, 1) !important;
+}
+
+.wrapper_button {
+  margin: 20px 0;
+}
+
+.wrapper_button [class*='MuiButton-root'] {
+  border: 1px solid #f7931e;
+  background-color: #f7931e;
+  color: #000;
+  width: 100%;
+  border-radius: 12px;
+}
+
+.wrapper_button [class*='MuiButton-root']:hover {
+  background-color: #f7cfa0;
+}
