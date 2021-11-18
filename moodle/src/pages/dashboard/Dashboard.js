@@ -1,8 +1,14 @@
 import React from 'react'
-import { CourseItem } from '../components'
+import { CourseItem } from '../../components'
+import CoursesHeader from '../../UI/Header/CourseHeader'
 
 const Dashboard = () => {
-  return <CourseItem />
+  return (
+    <React.Fragment>
+      <CoursesHeader />
+      <CourseItem />
+    </React.Fragment>
+  )
 }
 
 export default Dashboard
