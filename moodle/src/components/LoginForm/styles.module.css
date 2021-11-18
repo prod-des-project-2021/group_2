@@ -2,7 +2,14 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 10rem;
+  padding: 8rem;
+  text-align: center;
+}
+
+.title {
+  font-size: 30px !important;
+  font-weight: 700 !important;
+  padding: 10px 0;
 }
 
 .input_wrapper {
@@ -18,13 +25,26 @@
 }
 
 .wrapper_button [class*='MuiButton-root'] {
+  padding: 10px 0;
   border: 1px solid #f7931e;
   background-color: #f7931e;
-  color: #000;
+  color: #fff;
   width: 100%;
   border-radius: 12px;
 }
 
 .wrapper_button [class*='MuiButton-root']:hover {
   background-color: #f7cfa0;
+  color: #000;
+}
+
+.question {
+  padding: 10px 0;
+  font-size: 16px;
+}
+
+.link {
+  text-decoration: none;
+  font-weight: 600;
+  color: #f7931e;
 }

@@ -1,3 +1,5 @@
 export { default as CourseItem } from './CourseItem/index'
+export { default as ImgSlider } from './ImgSlider/ImgSlider'
 export { default as LoginForm } from './LoginForm/LoginForm'
+export { default as RegisterForm } from './RegisterForm/RegisterForm'
 export { default as ScrollToTopButton } from './ScrollToTopButton/ScrollToTopButton'
