@@ -96,7 +96,7 @@ export default function CourseHeader() {
         boxShadow: 'none',
       }}
     >
-      <MenuItem onClick={handleMenuClose}>Huy Bui</MenuItem>
+      <MenuItem onClick={handleMenuClose} style={{ justifyContent: 'center' }}>Huy Bui</MenuItem>
       <Divider sx={{ my: 0.5 }} />
       <MenuItem onClick={handleMenuClose}>
         <SpeedIcon style={{ paddingRight: '10px' }} />
