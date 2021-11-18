@@ -87,18 +87,14 @@ export default function CourseHeader() {
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
-      anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
       id={menuId}
       keepMounted
-      transformOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
       open={isMenuOpen}
       onClose={handleMenuClose}
+      style={{
+        marginTop: '0.75em',
+        boxShadow: 'none',
+      }}
     >
       <MenuItem onClick={handleMenuClose}>Huy Bui</MenuItem>
       <Divider sx={{ my: 0.5 }} />
