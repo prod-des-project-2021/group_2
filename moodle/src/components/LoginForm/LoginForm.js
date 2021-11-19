@@ -15,7 +15,7 @@ import styles from './styles.module.css'
 const LoginForm = () => {
   return (
     <Box className={styles.login_container}>
-      <Typography>Sign in to Moodle</Typography>
+      <Typography className={styles.title}>Sign in to Moodle</Typography>
       <Box className={styles.input_wrapper}>
         <TextField
           placeholder='E-mail'
@@ -52,6 +52,13 @@ const LoginForm = () => {
       </Grid>
       <Box className={styles.wrapper_button}>
         <CustomButton fullWidth>Sign In</CustomButton>
+        <Typography className={styles.question}>
+          Don't have an account?
+          <Link to='register' className={styles.link}>
+            {' '}
+            Register here!
+          </Link>
+        </Typography>
       </Box>
     </Box>
   )

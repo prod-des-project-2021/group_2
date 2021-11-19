@@ -1,7 +1,6 @@
 import Grid from '@mui/material/Grid'
 import React from 'react'
-import ImgSlider from '../../components/ImgSlider/ImgSlider'
-import LoginForm from '../../components/LoginForm/LoginForm'
+import { ImgSlider, LoginForm } from '../../components'
 
 const Login = () => {
   return (
