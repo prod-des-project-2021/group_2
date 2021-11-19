@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React,{useContext} from 'react'
 import { styled, alpha } from '@mui/material/styles'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
@@ -23,6 +23,8 @@ import CalendarViewMonthRoundedIcon from '@mui/icons-material/CalendarViewMonthR
 import MessageIcon from '@mui/icons-material/Message'
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded'
 import HomeIcon from '@mui/icons-material/Home'
+import AuthContext from '../../context/auth-context'
+import { useNavigate } from 'react-router-dom'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -65,11 +67,20 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }))
 
 export default function CourseHeader() {
+  const navigate = useNavigate()
+  const authCtx = useContext(AuthContext)
   const mainColor = '#F7931E'
   const [anchorEl, setAnchorEl] = React.useState(null)
   const [clicked, setClicked] = React.useState(false)
 
   const isMenuOpen = Boolean(anchorEl)
+
+const logoutHandler = () => {
+  authCtx.logout();
+  setAnchorEl(null)
+  navigate('/login')
+  console.log(authCtx)
+  }
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget)
@@ -128,13 +139,13 @@ export default function CourseHeader() {
         Private files{' '}
       </MenuItem>
       <Divider sx={{ my: 0.5 }} />
-      <MenuItem onClick={handleMenuClose}>
+      <MenuItem onClick={logoutHandler} >
         <LogoutRoundedIcon style={{ paddingRight: '10px' }} />
-        Sign out{' '}
+        Sign out
       </MenuItem>
     </Menu>
   )
-
+console.log(authCtx)
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" style={{ background: '#fff' }}>

@@ -1,3 +1,4 @@
+import React from 'react'
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined'
 import StarBorderIcon from '@mui/icons-material/StarBorder'
 import StarOutlinedIcon from '@mui/icons-material/StarOutlined'
