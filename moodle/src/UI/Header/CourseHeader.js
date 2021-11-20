@@ -1,4 +1,4 @@
-import * as React from 'react'
+import  React,{ useContext } from 'react'
 import { styled, alpha } from '@mui/material/styles'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
@@ -23,6 +23,8 @@ import CalendarViewMonthRoundedIcon from '@mui/icons-material/CalendarViewMonthR
 import MessageIcon from '@mui/icons-material/Message'
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded'
 import HomeIcon from '@mui/icons-material/Home'
+import AuthContext from '../../store/auth-context'
+import { useHistory } from 'react-router'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -65,6 +67,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }))
 
 export default function CourseHeader() {
+  const history = useHistory()
+  const authCtx = useContext(AuthContext)
   const mainColor = '#F7931E'
   const [anchorEl, setAnchorEl] = React.useState(null)
   const [clicked, setClicked] = React.useState(false)
@@ -76,6 +80,13 @@ export default function CourseHeader() {
   }
 
   const handleMenuClose = () => {
+    setAnchorEl(null)
+  }
+  const logoutHandler = () => {
+    authCtx.logout()
+    if (!authCtx.isLoggedIn) {
+      history.push('/login')
+    }
     setAnchorEl(null)
   }
 
@@ -128,9 +139,9 @@ export default function CourseHeader() {
         Private files{' '}
       </MenuItem>
       <Divider sx={{ my: 0.5 }} />
-      <MenuItem onClick={handleMenuClose}>
+      <MenuItem onClick={logoutHandler}>
         <LogoutRoundedIcon style={{ paddingRight: '10px' }} />
-        Sign out{' '}
+        Sign out
       </MenuItem>
     </Menu>
   )

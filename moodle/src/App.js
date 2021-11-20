@@ -1,17 +1,35 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { useContext } from 'react'
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import './App.css'
 import { ScrollToTopButton } from './components'
 import { Dashboard, Login, Profile, Register } from './pages'
+import AuthContext from './store/auth-context'
 
 function App() {
+  const authCtx = useContext(AuthContext)
+  console.log(authCtx)
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Dashboard />} />
-        <Route path='profile' element={<Profile />} />
-        <Route path='login' element={<Login />} />
-        <Route path='register' element={<Register />} />
-      </Routes>
+      <Switch>
+        <Route path="/" exact>
+          <Dashboard />
+        </Route>
+        {!authCtx.isLoggedIn && (
+          <Route path="/login">
+            <Login />
+          </Route>
+        )}
+        <Route path="/profile">
+          {authCtx.isLoggedIn && <Profile />}
+          {!authCtx.isLoggedIn && <Redirect to="/login" />}
+        </Route>
+        <Route path="/register">
+          <Register />
+        </Route>
+        <Route path="*">
+          <Redirect to="/" />
+        </Route>
+      </Switch>
       <ScrollToTopButton />
     </BrowserRouter>
   )
