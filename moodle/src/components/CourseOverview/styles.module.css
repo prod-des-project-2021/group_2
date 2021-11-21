@@ -1,0 +1,20 @@
+.course_container {
+  padding: 40px 0;
+}
+
+.title {
+  padding: 10px 0;
+  font-size: 1.2rem !important;
+  font-weight: 600 !important;
+}
+
+.buttons,
+.buttons:hover {
+  color: #df8621 !important;
+  border-color: #df8621 !important;
+  text-transform: none !important;
+}
+
+.courses_wrapper {
+  padding: 20px 0;
+}
