@@ -12,7 +12,12 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact>
-          <Dashboard />
+          {authCtx.isLoggedIn && (
+            <Route path="/">
+              <Dashboard />
+            </Route>
+          )}
+          {!authCtx.isLoggedIn && <Redirect to="/login" />}
         </Route>
         {!authCtx.isLoggedIn && (
           <Route path="/login">
