@@ -24,6 +24,7 @@ import {
 import { alpha, styled } from '@mui/material/styles'
 import React, { useContext } from 'react'
 import { useHistory } from 'react-router'
+import { Link } from 'react-router-dom'
 import AuthContext from '../../store/auth-context'
 import styles from './styles.module.css'
 
@@ -117,7 +118,8 @@ export default function Header() {
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
         <PersonIcon className={styles.padding_right} />
-        Credentials
+        <Link to='profile' className={styles.link}>Credentials</Link>
+        
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
         <BuildIcon className={styles.padding_right} />
