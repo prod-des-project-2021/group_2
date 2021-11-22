@@ -1,0 +1,24 @@
+.name {
+  color: #df8621 !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+}
+
+.subtitle {
+  color: #6f7680 !important;
+  font-size: 0.8rem !important;
+}
+
+.submit {
+  font-size: 0.9rem;
+  color: #495057 !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  padding: 6px 0 !important;
+}
+
+.time {
+  font-size: 0.9rem;
+  color: #495057 !important;
+  font-weight: 600 !important;
+}

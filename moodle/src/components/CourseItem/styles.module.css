@@ -1,5 +1,30 @@
-.wrapper_icon {
-  display: flex;
-  justify-content: center;
-  padding: 10px;
+.course_container {
+  box-shadow: none !important;
+}
+
+.course_code {
+  text-decoration: none;
+  color: #6f7680;
+}
+
+.button_favorite {
+  padding-right: 0 !important;
+}
+
+.icon_withborder {
+  color: #f1c40f !important;
+}
+
+.icon_filledborder {
+  color: #f1c40f !important;
+}
+
+.course_name {
+  text-decoration: none;
+}
+
+.course_name p {
+  font-size: 0.9rem;
+  color: #000;
+  padding: 10px 0;
 }

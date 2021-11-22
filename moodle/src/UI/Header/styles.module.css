@@ -1,0 +1,21 @@
+.padding_right {
+  padding-right: 10px;
+}
+
+.header {
+  background: #fff !important;
+  box-shadow: none !important;
+}
+
+.logo_wrapper {
+  width: 300px;
+}
+
+.logo {
+  height: auto;
+  width: inherit;
+}
+.link{
+  text-decoration: none;
+  color: black;
+}

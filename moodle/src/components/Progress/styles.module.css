@@ -1,0 +1,31 @@
+.progress_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.progress {
+  width: 100%;
+  margin-right: 5px;
+}
+
+.progress [class*='MuiLinearProgress-root'] {
+  background-color: rgb(253, 212, 165) !important;
+}
+
+.progress [class*='MuiLinearProgress-bar'] {
+  background-color: rgb(247, 147, 30) !important;
+}
+
+.progress_number {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.progress_number p {
+  font-size: 0.8rem;
+}
+
+.progress_container {
+  width: 100%;
+}

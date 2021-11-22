@@ -1,28 +1,32 @@
-import * as React from 'react'
-import { styled, alpha } from '@mui/material/styles'
-import AppBar from '@mui/material/AppBar'
-import Box from '@mui/material/Box'
-import Toolbar from '@mui/material/Toolbar'
-import IconButton from '@mui/material/IconButton'
-import InputBase from '@mui/material/InputBase'
-import Badge from '@mui/material/Badge'
-import MenuItem from '@mui/material/MenuItem'
-import Menu from '@mui/material/Menu'
-import MenuIcon from '@mui/icons-material/Menu'
-import SearchIcon from '@mui/icons-material/Search'
 import AccountCircle from '@mui/icons-material/AccountCircle'
-import NotificationsIcon from '@mui/icons-material/Notifications'
-import CardMedia from '@mui/material/CardMedia'
-import Card from '@mui/material/Card'
-import CloseIcon from '@mui/icons-material/Close'
-import Divider from '@mui/material/Divider'
-import SpeedIcon from '@mui/icons-material/Speed'
-import PersonIcon from '@mui/icons-material/Person'
 import BuildIcon from '@mui/icons-material/Build'
 import CalendarViewMonthRoundedIcon from '@mui/icons-material/CalendarViewMonthRounded'
-import MessageIcon from '@mui/icons-material/Message'
-import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded'
+import CloseIcon from '@mui/icons-material/Close'
 import HomeIcon from '@mui/icons-material/Home'
+import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded'
+import MenuIcon from '@mui/icons-material/Menu'
+import MessageIcon from '@mui/icons-material/Message'
+import NotificationsIcon from '@mui/icons-material/Notifications'
+import PersonIcon from '@mui/icons-material/Person'
+import SearchIcon from '@mui/icons-material/Search'
+import SpeedIcon from '@mui/icons-material/Speed'
+import {
+  AppBar,
+  Badge,
+  Box,
+  Divider,
+  IconButton,
+  InputBase,
+  Menu,
+  MenuItem,
+  Toolbar,
+} from '@mui/material'
+import { alpha, styled } from '@mui/material/styles'
+import React, { useContext } from 'react'
+import { useHistory } from 'react-router'
+import { Link } from 'react-router-dom'
+import AuthContext from '../../store/auth-context'
+import styles from './styles.module.css'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -64,7 +68,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }))
 
-export default function CourseHeader() {
+export default function Header() {
+  const history = useHistory()
+  const authCtx = useContext(AuthContext)
   const mainColor = '#F7931E'
   const [anchorEl, setAnchorEl] = React.useState(null)
   const [clicked, setClicked] = React.useState(false)
@@ -76,6 +82,13 @@ export default function CourseHeader() {
   }
 
   const handleMenuClose = () => {
+    setAnchorEl(null)
+  }
+  const logoutHandler = () => {
+    authCtx.logout()
+    if (!authCtx.isLoggedIn) {
+      history.push('/login')
+    }
     setAnchorEl(null)
   }
 
@@ -92,86 +105,89 @@ export default function CourseHeader() {
       open={isMenuOpen}
       onClose={handleMenuClose}
       style={{
-        marginTop: '0.75em',
-        boxShadow: 'none',
+        marginTop: '0.7em',
       }}
     >
-      <MenuItem onClick={handleMenuClose} style={{ justifyContent: 'center' }}>Huy Bui</MenuItem>
+      <MenuItem onClick={handleMenuClose} style={{ justifyContent: 'center' }}>
+        Huy Bui
+      </MenuItem>
       <Divider sx={{ my: 0.5 }} />
       <MenuItem onClick={handleMenuClose}>
-        <SpeedIcon style={{ paddingRight: '10px' }} />
+        <SpeedIcon className={styles.padding_right} />
         Desktop
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
-        <PersonIcon style={{ paddingRight: '10px' }} />
-        Credentials
+        <PersonIcon className={styles.padding_right} />
+        <Link to='profile' className={styles.link}>Credentials</Link>
+        
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
-        <BuildIcon style={{ paddingRight: '10px' }} />
+        <BuildIcon className={styles.padding_right} />
         Preferences
       </MenuItem>
       <Divider sx={{ my: 0.5 }} />
       <MenuItem onClick={handleMenuClose}>
-        <CalendarViewMonthRoundedIcon style={{ paddingRight: '10px' }} />
+        <CalendarViewMonthRoundedIcon className={styles.padding_right} />
         Evaluations
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
-        <MessageIcon style={{ paddingRight: '10px' }} />
+        <MessageIcon className={styles.padding_right} />
         Messages
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
-        <CalendarViewMonthRoundedIcon style={{ paddingRight: '10px' }} />
+        <CalendarViewMonthRoundedIcon className={styles.padding_right} />
         Calender
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
-        <PersonIcon style={{ paddingRight: '10px' }} />
-        Private files{' '}
+        <PersonIcon className={styles.padding_right} />
+        Private files
       </MenuItem>
       <Divider sx={{ my: 0.5 }} />
-      <MenuItem onClick={handleMenuClose}>
-        <LogoutRoundedIcon style={{ paddingRight: '10px' }} />
-        Sign out{' '}
+      <MenuItem onClick={logoutHandler}>
+        <LogoutRoundedIcon className={styles.padding_right} />
+        Sign out
       </MenuItem>
     </Menu>
   )
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" style={{ background: '#fff' }}>
+    <Box>
+      <AppBar position='static' className={styles.header}>
         <Toolbar>
           <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
+            size='large'
+            edge='start'
+            color='inherit'
+            aria-label='open drawer'
             sx={{ mr: 2 }}
             onClick={clickedMenuHandler}
           >
             {!clicked && <MenuIcon style={{ color: mainColor }} />}
             {clicked && <CloseIcon style={{ color: mainColor }} />}
           </IconButton>
-          <Card sx={{ maxWidth: 270 }}>
-            <CardMedia
-              component="img"
-              height="70"
-              image="https://www.oamk.fi/images/oamk/oamk-logo2.png"
+          <Box className={styles.logo_wrapper}>
+            <img
+              className={styles.logo}
+              src='https://idp.oamk.fi/idp/images/logo_vari_300dpi_EN.jpg'
+              alt='oamk logo'
             />
-          </Card>
+          </Box>
+
           <IconButton
-            size="large"
-            aria-label="show 4 new mails"
-            color="inherit"
+            size='large'
+            aria-label='show 4 new mails'
+            color='inherit'
           >
-            <Badge color="error">
+            <Badge color='error'>
               <HomeIcon style={{ color: mainColor }} />
             </Badge>
           </IconButton>
           <IconButton
-            size="large"
-            aria-label="show 4 new mails"
-            color="inherit"
+            size='large'
+            aria-label='show 4 new mails'
+            color='inherit'
           >
-            <Badge color="error">
+            <Badge color='error'>
               <SpeedIcon style={{ color: mainColor }} />
             </Badge>
           </IconButton>
@@ -183,37 +199,37 @@ export default function CourseHeader() {
                 <SearchIcon />
               </SearchIconWrapper>
               <StyledInputBase
-                placeholder="Search…"
+                placeholder='Search…'
                 inputProps={{ 'aria-label': 'search' }}
               />
             </Search>
 
             <IconButton
-              size="large"
-              aria-label="show 4 new mails"
-              color="inherit"
+              size='large'
+              aria-label='show 4 new mails'
+              color='inherit'
             >
-              <Badge color="error">
+              <Badge color='error'>
                 <NotificationsIcon style={{ color: mainColor }} />
               </Badge>
             </IconButton>
             <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
+              size='large'
+              aria-label='show 17 new notifications'
+              color='inherit'
             >
-              <Badge color="error">
+              <Badge color='error'>
                 <MessageIcon style={{ color: mainColor }} />
               </Badge>
             </IconButton>
             <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
+              size='large'
+              edge='end'
+              aria-label='account of current user'
               aria-controls={menuId}
-              aria-haspopup="true"
+              aria-haspopup='true'
               onClick={handleProfileMenuOpen}
-              color="inherit"
+              color='inherit'
             >
               <AccountCircle style={{ color: 'grey' }} />
             </IconButton>
