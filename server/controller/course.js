@@ -1,4 +1,6 @@
 const Course = require('../models/course')
+const User = require('../models/users')
+
 
 const addCourse = (req, res, next) => {
   let course = new Course({
@@ -12,13 +14,13 @@ const addCourse = (req, res, next) => {
     .save()
     .then((result) => {
       res.json({
-        message: 'Product added successfully',
+        message: 'Course added successfully',
       })
     })
     .catch((err) => {
       console.log(err)
       res.json({
-        message: 'Product add failed',
+        message: 'Course add failed',
       })
     })
 }
@@ -35,4 +37,40 @@ const getAllCourses = (req, res, next) => {
     })
 }
 
-module.exports = { addCourse, getAllCourses }
+const getCourse = (req, res, next) => {
+  courseId = req.params.courseId
+  Course.findById(courseId)
+    .then((result) => {
+      res.json({
+        result,
+      })
+    })
+    .catch((error) => {
+      console.log(error)
+      res.json({
+        message: 'Something wrong happened',
+      })
+    })
+}
+
+const enrolledCourses = (req, res, next) => {
+  userId = req.params.userId
+  courseId = "619cfedaf5a04b2cd4a33a0a"
+  let addedData = Course.findById(courseId)
+  console.log(userId)
+  console.log(req.params.courseId)
+  User.findByIdAndUpdate(userId, { $push: addedData })
+    .then((result) => {
+      res.json({
+        message: 'Course added successfully',
+      })
+    })
+    .catch((error) => {
+      console.log(error)
+      res.json({
+        message: 'Something wrong happened',
+      })
+    })
+}
+
+module.exports = { addCourse, getAllCourses, getCourse, enrolledCourses }
