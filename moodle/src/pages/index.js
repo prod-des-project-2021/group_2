@@ -1,3 +1,4 @@
+export { default as Course } from './course/Course'
 export { default as Dashboard } from './dashboard/Dashboard'
 export { default as Login } from './login/Login'
 export { default as Profile } from './profile/Profile'

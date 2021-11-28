@@ -1,0 +1,15 @@
+.title {
+  color: #f7931e !important;
+}
+
+.info_btn {
+  color: #f7931e !important;
+}
+
+.info_btn:hover {
+  background-color: #f5ddc2 !important;
+}
+
+.teacher {
+  color: #6f7680;
+}
