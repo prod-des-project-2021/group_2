@@ -2,7 +2,8 @@ import { Grid } from '@mui/material'
 import React from 'react'
 import { CourseName } from '../index'
 import styles from './styles.module.css'
-const rows = [
+
+const data = [
   {
     name: 'Company-Oriented Product Development Projects',
     teacher: ['Lasse Haverinen', 'Janne Kumpuoja'],
@@ -34,9 +35,23 @@ const rows = [
     ],
     code: 'TK00BP66',
   },
+  {
+    name: 'Work Community Skills (BIO, OPT, STH)',
+    teacher: ['Merja Suomalainen'],
+    code: 'YY00BH05',
+  },
+  {
+    name: 'Basics of Mathematics and Physics DIN21SP',
+    teacher: ['Jaakko Kaski', 'Susanna Kujanpää'],
+    code: 'ID00CS33',
+  },
+  {
+    name: 'Technical Drawing and Building Modelling',
+    teacher: ['Ari Oikarinen', 'Jussi Puumalainen'],
+  },
 ]
 
-export default function BasicTable() {
+export default function CourseTable() {
   return (
     <Grid
       container
@@ -44,7 +59,7 @@ export default function BasicTable() {
       justifyContent='space-between'
       alignItems='center'
     >
-      {rows.map((row, index) => (
+      {data.map((row, index) => (
         <Grid
           item
           xs={12}
