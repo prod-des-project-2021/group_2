@@ -1,0 +1,43 @@
+.container {
+  margin: 20px 0;
+}
+
+.link {
+  text-decoration: none !important;
+  color: #000;
+}
+
+.link:hover {
+  color: #f7931e;
+}
+
+.form {
+  margin: 20px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.form [class*='MuiOutlinedInput'] {
+  height: 3rem !important;
+}
+
+.input {
+  width: 50%;
+}
+
+.wrapper_button [class*='MuiButton-root'] {
+  padding: 10px 0;
+  border: 1px solid #f7931e;
+  background-color: #f7931e;
+  color: #fff;
+  width: 100%;
+}
+
+.wrapper_button [class*='MuiButton-root']:hover {
+  background-color: #f7cfa0;
+  color: #000;
+}

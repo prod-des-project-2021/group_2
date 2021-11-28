@@ -9,6 +9,7 @@ import { CourseOverview, Timeline } from '../../components'
 import { ASSIGNMENT, COURSE } from '../../constants/images'
 import { CustomModal, Footer, Header } from '../../UI'
 import styles from './styles.module.css'
+
 const Dashboard = () => {
   return (
     <React.Fragment>
