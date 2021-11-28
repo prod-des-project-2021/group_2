@@ -1,5 +1,5 @@
 export { default as CourseDate } from './CourseDate/CourseDate'
-export { default as CourseItem } from './CourseItem/index'
+export { default as CourseItem } from './CourseItem/CourseItem'
 export { default as CourseName } from './CourseName/CourseName'
 export { default as CourseOverview } from './CourseOverview/CourseOverview'
 export { default as CourseTable } from './CourseTable/CourseTable'
