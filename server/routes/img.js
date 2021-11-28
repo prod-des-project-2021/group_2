@@ -5,6 +5,6 @@ const upload = require('../middleware/upload')
 
 router.get('/images', imgController.getImages)
 
-router.post('/addImage', upload.single('images') , imgController.addImage)
+router.post('/images/addImage',upload.single('image_link') , imgController.addImage)
 
 module.exports = router

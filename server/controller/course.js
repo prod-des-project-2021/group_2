@@ -1,7 +1,6 @@
 const Course = require('../models/course')
 const User = require('../models/users')
 
-
 const addCourse = (req, res, next) => {
   let course = new Course({
     name: req.body.name,
@@ -53,24 +52,36 @@ const getCourse = (req, res, next) => {
     })
 }
 
-const enrolledCourses = (req, res, next) => {
+const enrolledCourses = async (req, res, next) => {
   userId = req.params.userId
-  courseId = "619cfedaf5a04b2cd4a33a0a"
-  let addedData = Course.findById(courseId)
-  console.log(userId)
-  console.log(req.params.courseId)
-  User.findByIdAndUpdate(userId, { $push: addedData })
-    .then((result) => {
-      res.json({
-        message: 'Course added successfully',
-      })
-    })
-    .catch((error) => {
-      console.log(error)
-      res.json({
-        message: 'Something wrong happened',
-      })
-    })
+  courseId = req.params.courseId
+
+  const userIsValid = await User.findById(userId)
+  const courseIsValid = await Course.findById(courseId)
+
+  if (!userIsValid) res.status(401)
+  if (!courseIsValid) res.json({ msg: 'Course not existed' })
+
+  const courseToAdd = await Course.findById(courseIsValid)
+
+  const courseUser = await User.findById(userIsValid)
+
+  const userCourses = courseUser.courses
+
+  var courseAlreadyEnroller = false
+
+  userCourses.map((element) => {
+    if (element.name === courseIsValid.name) courseAlreadyEnroller = true
+  })
+
+  if (courseAlreadyEnroller) res.json({ mes: 'Course already enrolled' })
+  else {
+    const result = await User.updateOne(
+      { _id: userIsValid },
+      { $push: { courses: courseToAdd } },
+    )
+    res.json({ mes: 'Added successfully' })
+  }
 }
 
 module.exports = { addCourse, getAllCourses, getCourse, enrolledCourses }

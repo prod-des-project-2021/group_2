@@ -9,6 +9,6 @@ router.get('/courses', courseController.getAllCourses)
 
 router.get('/courses/:courseId', courseController.getCourse)
 
-router.put('/users/:userId/:/courseId/enrolling' , courseController.enrolledCourses)
+router.put('/users/:userId/:courseId/enrolling' , courseController.enrolledCourses)
 
 module.exports = router

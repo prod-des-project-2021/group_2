@@ -17,7 +17,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    courses: [{ type: Schema.Types.ObjectId, ref: 'Course' }],
+    courses: [Object],
   },
   { timestamps: true },
 )
