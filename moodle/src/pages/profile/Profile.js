@@ -1,10 +1,15 @@
 import { Avatar, Breadcrumbs, Container, Grid, Typography } from '@mui/material'
 import { Box } from '@mui/system'
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { CustomButton } from '../../UI'
 import styles from './styles.module.css'
-const Profile = ({ email }) => {
+import AuthContext from '../../store/auth-context'
+const Profile = () => {
+  const authCtx = useContext(AuthContext)
+  console.log(authCtx)
+  const { id, name, email } = authCtx.userInfo.userInfo
+  console.log( id , name , email)
   const handleClick = (event) => {
     event.preventDefault()
   }
@@ -12,28 +17,28 @@ const Profile = ({ email }) => {
     <Container>
       <Grid
         container
-        direction='row'
-        justifyContent='space-between'
-        alignItems='center'
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
         spacing={2}
       >
         <Grid item>
           <Grid
             container
-            direction='row'
-            justifyContent='space-between'
-            alignItems='center'
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
             spacing={2}
           >
             <Grid item>
               <Avatar
-                alt='picture profile'
-                src='/static/images/avatar/1.jpg'
+                alt="picture profile"
+                src="/static/images/avatar/1.jpg"
                 sx={{ width: 80, height: 80 }}
               />
             </Grid>
             <Grid item>
-              <Typography className={styles.name}>Ha Quyen</Typography>
+              <Typography className={styles.name}>{name}</Typography>
             </Grid>
           </Grid>
         </Grid>
@@ -55,20 +60,20 @@ const Profile = ({ email }) => {
         </Grid>
       </Grid>
       <Box
-        role='presentation'
+        role="presentation"
         onClick={handleClick}
         className={styles.wrapper_link}
       >
-        <Breadcrumbs aria-label='breadcrumb'>
-          <Link to='/'>Dashboard</Link>
-          <Link to='/'>Profile</Link>
+        <Breadcrumbs aria-label="breadcrumb">
+          <Link to="/">Dashboard</Link>
+          <Link to="/">Profile</Link>
         </Breadcrumbs>
       </Box>
       <Grid
         container
-        direction='row'
-        justifyContent='space-between'
-        alignItems='center'
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
         className={styles.container_info}
       >
         <Grid item xs>
@@ -76,7 +81,7 @@ const Profile = ({ email }) => {
             <Typography className={styles.title}>User details</Typography>
             <Typography className={styles.info_title}>Email address</Typography>
             <a href={`mailto:${email}`} className={styles.email}>
-              a{email}
+              {email}
             </a>
           </Box>
           <Box className={styles.wrapper_info}>
@@ -112,7 +117,7 @@ const Profile = ({ email }) => {
               <CustomButton>View QR Code</CustomButton>
             </div>
             <Typography>This site has mobile app access enabled.</Typography>
-            <a href='#'>Download the mobile app.</a>
+            <a href="#">Download the mobile app.</a>
           </Box>
         </Grid>
       </Grid>

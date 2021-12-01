@@ -7,7 +7,7 @@ import AuthContext from './store/auth-context'
 
 function App() {
   const authCtx = useContext(AuthContext)
-
+  
   return (
     <BrowserRouter>
       <Switch>

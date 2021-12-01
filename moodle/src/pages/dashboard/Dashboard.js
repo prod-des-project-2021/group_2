@@ -30,15 +30,15 @@ const Dashboard = () => {
         </Grid>
         <Grid item xs={3}>
           <Box className={styles.info_nav}>
-            <Link to='' className={styles.link}>
+            <Link to="" className={styles.link}>
               <DescriptionIcon />
               <Typography>Courses</Typography>
             </Link>
-            <Link to='' className={styles.link}>
+            <Link to="" className={styles.link}>
               <HelpIcon />
               <Typography>Instructions and Support</Typography>
             </Link>
-            <Link to='' className={styles.link}>
+            <Link to="" className={styles.link}>
               <SchoolIcon />
               <Typography>Create new course</Typography>
             </Link>
@@ -48,7 +48,7 @@ const Dashboard = () => {
               Latest announcements
             </Typography>
             <Typography className={styles.date_nav}>22 Nov, 10.03</Typography>
-            <Link to='' className={styles.news_nav}>
+            <Link to="" className={styles.news_nav}>
               <Typography>
                 Moodle course templates available for teachers
               </Typography>
@@ -62,11 +62,11 @@ const Dashboard = () => {
               <li>
                 <div>
                   <div>
-                    <img src={ASSIGNMENT} alt='icon' />
+                    <img src={ASSIGNMENT} alt="icon" />
                   </div>
                   <div>
-                    <Link to='' className={styles.link}>
-                      <CustomModal title='HOMEWORK PROBLEMS 4. Submission of the solutions to Homework'></CustomModal>
+                    <Link to="" className={styles.link}>
+                      <CustomModal title="HOMEWORK PROBLEMS 4. Submission of the solutions to Homework"></CustomModal>
                     </Link>
                   </div>
                 </div>

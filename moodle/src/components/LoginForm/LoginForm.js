@@ -33,8 +33,7 @@ const LoginForm = () => {
       },
     })
       .then((res) => {
-        console.log(res.data)
-        authCtx.login(res.data.idToken)
+        authCtx.login(res.data.idToken, res.data)
       })
       .catch((err) => {
         console.log(err)
@@ -57,6 +56,7 @@ const LoginForm = () => {
     //   alert(err.message)
     // })
   }
+  
   if (authCtx.isLoggedIn) {
     history.push('/')
   }

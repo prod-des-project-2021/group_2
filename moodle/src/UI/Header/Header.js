@@ -76,7 +76,7 @@ export default function Header() {
   const [clicked, setClicked] = React.useState(false)
 
   const isMenuOpen = Boolean(anchorEl)
-
+  const {name} = authCtx.userInfo.userInfo
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget)
   }
@@ -95,22 +95,8 @@ export default function Header() {
   const clickedMenuHandler = () => {
     setClicked(!clicked)
   }
-  const submitHandler = (event) => {
-    event.preventDefault();
-    console.log('this worked')
-    console.log(authCtx.token)
-    setAnchorEl(null)
-    fetch(`https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${process.env.REACT_APP_API_KEY}`, {
-      method: 'POST',
-      body: JSON.stringify({
-        idToken: authCtx.token,
-      }),
-    }).then(res => {
-      console.log(res)
-    }).catch(err => {
-      console.log(err)
-    })
-  }
+  
+
 
   const menuId = 'primary-search-account-menu'
   const renderMenu = (
@@ -125,10 +111,10 @@ export default function Header() {
       }}
     >
       <MenuItem onClick={handleMenuClose} style={{ justifyContent: 'center' }}>
-        Huy Bui
+       {name}
       </MenuItem>
       <Divider sx={{ my: 0.5 }} />
-      <MenuItem onClick={submitHandler} type='submit'>
+      <MenuItem onClick={handleMenuClose} type='submit'>
         <SpeedIcon className={styles.padding_right} />
         Desktop
       </MenuItem>
