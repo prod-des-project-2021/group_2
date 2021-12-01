@@ -7,12 +7,12 @@ import {
   Typography,
 } from '@mui/material'
 import { Box } from '@mui/system'
-import React, { useRef,useContext } from 'react'
-import { Link,useHistory } from 'react-router-dom'
+import React, { useRef, useContext } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import AuthContext from '../../store/auth-context'
 import { CustomButton } from '../../UI/index'
 import styles from './styles.module.css'
-
+import axios from 'axios'
 const LoginForm = () => {
   const history = useHistory()
   const authCtx = useContext(AuthContext)
@@ -23,42 +23,43 @@ const LoginForm = () => {
     event.preventDefault()
     const enteredEmail = emailInputRef.current.value
     const enteredPassword = passwordInputRef.current.value
-
-    fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.REACT_APP_API_KEY}`, {
-      method: 'POST',
-      body: JSON.stringify({
+    console.log(enteredEmail, enteredPassword)
+    axios({
+      method: 'post',
+      url: 'http://localhost:5000/login',
+      data: {
         email: enteredEmail,
         password: enteredPassword,
-        returnSecureToken: true,
-      }),
-     
+      },
     })
       .then((res) => {
-        if (res.ok) {
-          console.log(res)
-          return res.json();
-        } else {
-          return res.json().then((data) => {
-            let errorMessage = 'Authentication failed!';
-            // if (data && data.error && data.error.message) {
-            //   errorMessage = data.error.message;
-            // }
-            throw new Error(errorMessage);
-          });
-        }
-      })
-      .then((data) => {
-        console.log(data);
-        authCtx.login(data.idToken)
-        
+        console.log(res.data)
+        authCtx.login(res.data.idToken)
       })
       .catch((err) => {
-        alert(err.message);
-      });
-  };
+        console.log(err)
+      })
+    // .then((res) => {
+    //   if (res.ok) {
+    //     console.log(res)
+    //     return res.json({ msg: 'Login successfully' })
+    //   } else {
+    //     return res.json().then((data) => {
+    //       let errorMessage = 'Authentication failed!'
+    //       // if (data && data.error && data.error.message) {
+    //       //   errorMessage = data.error.message;
+    //       // }
+    //       throw new Error(errorMessage)
+    //     })
+    //   }
+    // })
+    // .catch((err) => {
+    //   alert(err.message)
+    // })
+  }
   if (authCtx.isLoggedIn) {
-          history.push('/')
-        }
+    history.push('/')
+  }
   return (
     <Box className={styles.login_container}>
       <Typography className={styles.title}>Sign in to Moodle</Typography>
