@@ -4,7 +4,7 @@ import { course } from '../../constants/data'
 import { CourseName } from '../index'
 import styles from './styles.module.css'
 
-export default function CourseTable() {
+export default function CourseTable({ searchTerm }) {
   return (
     <Grid
       container
@@ -12,16 +12,28 @@ export default function CourseTable() {
       justifyContent='space-between'
       alignItems='center'
     >
-      {course.map((row, index) => (
-        <Grid
-          item
-          xs={12}
-          key={`course-name-${index}`}
-          className={styles.course_container}
-        >
-          <CourseName course={row}></CourseName>
-        </Grid>
-      ))}
+      {course
+        ?.filter((val) => {
+          if (searchTerm === '') {
+            return val
+          } else if (
+            val.name.toLowerCase().includes(searchTerm.toLowerCase())
+          ) {
+            return val
+          }
+        })
+        .map((val, key) => {
+          return (
+            <Grid
+              item
+              xs={12}
+              key={`course-name-${key}`}
+              className={styles.course_container}
+            >
+              <CourseName course={val}></CourseName>
+            </Grid>
+          )
+        })}
     </Grid>
   )
 }
