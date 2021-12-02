@@ -1,0 +1,36 @@
+.container {
+  margin: 40px 0;
+}
+
+.course_name {
+  color: #fff;
+  width: fit-content;
+  padding: 10px !important;
+  font-size: 2rem !important;
+  font-weight: 600 !important;
+  background-color: #af6108;
+}
+
+.breadcrums_wrapper {
+  margin: 20px 0 !important;
+}
+
+.link {
+  text-decoration: none !important;
+  color: #f7931e;
+}
+
+.course_part {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.title {
+  padding: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #f7931e;
+}
+
+.content_wrapper {
+  padding: 20px;
+}
