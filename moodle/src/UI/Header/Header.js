@@ -76,7 +76,7 @@ export default function Header() {
   const [clicked, setClicked] = React.useState(false)
 
   const isMenuOpen = Boolean(anchorEl)
-
+  const {name} = authCtx.userInfo.userInfo
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget)
   }
@@ -95,6 +95,8 @@ export default function Header() {
   const clickedMenuHandler = () => {
     setClicked(!clicked)
   }
+  
+
 
   const menuId = 'primary-search-account-menu'
   const renderMenu = (
@@ -109,10 +111,10 @@ export default function Header() {
       }}
     >
       <MenuItem onClick={handleMenuClose} style={{ justifyContent: 'center' }}>
-        Huy Bui
+       {name}
       </MenuItem>
       <Divider sx={{ my: 0.5 }} />
-      <MenuItem onClick={handleMenuClose}>
+      <MenuItem onClick={handleMenuClose} type='submit'>
         <SpeedIcon className={styles.padding_right} />
         Desktop
       </MenuItem>
