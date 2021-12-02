@@ -2,7 +2,15 @@ import { useContext } from 'react'
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 import './App.css'
 import { ScrollToTopButton } from './components'
-import { Course, Dashboard, Enrolment, Login, Profile, Register } from './pages'
+import {
+  Course,
+  Dashboard,
+  DetailCourse,
+  Enrolment,
+  Login,
+  Profile,
+  Register,
+} from './pages'
 import AuthContext from './store/auth-context'
 
 function App() {
@@ -26,6 +34,10 @@ function App() {
         )}
         <Route path='/enrol'>
           {!authCtx.isLoggedIn && <Enrolment />}
+          {authCtx.isLoggedIn && <Redirect to='/login' />}
+        </Route>
+        <Route path='/course/:slug'>
+          {!authCtx.isLoggedIn && <DetailCourse />}
           {authCtx.isLoggedIn && <Redirect to='/login' />}
         </Route>
         <Route path='/course'>
