@@ -12,7 +12,7 @@
 }
 
 .breadcrums_wrapper {
-  margin: 20px 0;
+  margin: 20px 0 !important;
 }
 
 .link {
@@ -21,9 +21,9 @@
 }
 
 .enrolment_options {
-  margin: 20px 0;
-  font-size: 1.5rem;
-  font-weight: 600;
+  margin: 20px 0 !important;
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
 }
 
 .course_info {
@@ -45,14 +45,14 @@
 .btn_wrapper {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  margin: 20px 0 !important;
 }
 
 .btn {
   color: #fff;
-  background-color: #f7931e;
+  background-color: #f7931e !important;
 }
 
 .btn:hover {
-  background-color: #f7931e;
+  background-color: #f7931e !important;
 }
