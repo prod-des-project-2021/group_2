@@ -16,7 +16,7 @@ const RegisterForm = () => {
     const enteredName = nameInputRef.current.value
     const enteredEmail = emailInputRef.current.value
     const enteredPassword = passwordInputRef.current.value
-     const url = 'http://localhost:5000/register'
+     const url = `${process.env.REACT_APP_URL}register`
 
     fetch(url, {
       method: 'POST',

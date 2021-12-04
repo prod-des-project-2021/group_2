@@ -6,7 +6,7 @@ import {
   Course,
   Dashboard,
   DetailCourse,
-  Enrolment,
+  Enrollment,
   Login,
   Profile,
   Register,
@@ -15,44 +15,42 @@ import AuthContext from './store/auth-context'
 
 function App() {
   const authCtx = useContext(AuthContext)
-  
+
   return (
     <BrowserRouter>
       <Switch>
-        <Route path='/' exact>
+        <Route path="/" exact>
           {authCtx.isLoggedIn && (
-            <Route path='/'>
+            <Route path="/">
               <Dashboard />
             </Route>
           )}
-          {!authCtx.isLoggedIn && <Redirect to='/login' />}
+          {!authCtx.isLoggedIn && <Redirect to="/login" />}
         </Route>
         {!authCtx.isLoggedIn && (
-          <Route path='/login'>
+          <Route path="/login">
             <Login />
           </Route>
         )}
-        <Route path='/enrol'>
-          {!authCtx.isLoggedIn && <Enrolment />}
-          {authCtx.isLoggedIn && <Redirect to='/login' />}
+        <Route path="/enroll">
+          <Enrollment />
         </Route>
-        <Route path='/course/:slug'>
-          {!authCtx.isLoggedIn && <DetailCourse />}
-          {authCtx.isLoggedIn && <Redirect to='/login' />}
+        <Route path="/course/:courseId">
+          <DetailCourse />
         </Route>
-        <Route path='/course'>
-          {!authCtx.isLoggedIn && <Course />}
-          {authCtx.isLoggedIn && <Redirect to='/login' />}
+        <Route path="/course">
+          {authCtx.isLoggedIn && <Course />}
+          {!authCtx.isLoggedIn && <Redirect to="/login" />}
         </Route>
-        <Route path='/profile'>
+        <Route path="/profile">
           {authCtx.isLoggedIn && <Profile />}
-          {!authCtx.isLoggedIn && <Redirect to='/login' />}
+          {!authCtx.isLoggedIn && <Redirect to="/login" />}
         </Route>
-        <Route path='/register'>
+        <Route path="/register">
           <Register />
         </Route>
-        <Route path='*'>
-          <Redirect to='/' />
+        <Route path="*">
+          <Redirect to="/" />
         </Route>
       </Switch>
       <ScrollToTopButton />
