@@ -26,7 +26,7 @@ const LoginForm = () => {
     console.log(enteredEmail, enteredPassword)
     axios({
       method: 'post',
-      url: 'http://localhost:5000/login',
+      url: `${process.env.REACT_APP_URL}login`,
       data: {
         email: enteredEmail,
         password: enteredPassword,
@@ -56,9 +56,9 @@ const LoginForm = () => {
     //   alert(err.message)
     // })
   }
-  
+
   if (authCtx.isLoggedIn) {
-    history.push('/')
+    history.replace('/')
   }
   return (
     <Box className={styles.login_container}>

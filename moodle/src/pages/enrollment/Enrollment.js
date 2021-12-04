@@ -29,7 +29,7 @@ const Enrollment = () => {
         </Breadcrumbs>
         <Box>
           <Typography className={styles.enrolment_options}>
-            Enrolment options
+            Enrollment options
           </Typography>
         </Box>
         <Box>
@@ -42,7 +42,7 @@ const Enrollment = () => {
             </Typography>
           </Box>
           <Box className={styles.course_info}>
-            <Typography className={styles.course_title}>Couse Code:</Typography>
+            <Typography className={styles.course_title}>Course Code:</Typography>
             <Typography>T771010D</Typography>
           </Box>
           <Box className={styles.course_info}>
@@ -56,7 +56,7 @@ const Enrollment = () => {
         <Box className={styles.btn_wrapper}>
           <Link to='course/:slug'>
             <Button variant='contained' className={styles.btn}>
-              Enrol
+              Enroll
             </Button>
           </Link>
         </Box>

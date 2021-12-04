@@ -3,14 +3,17 @@ import HelpIcon from '@mui/icons-material/Help'
 import SchoolIcon from '@mui/icons-material/School'
 import { Container, Grid, Typography } from '@mui/material'
 import { Box } from '@mui/system'
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { CourseOverview, Timeline } from '../../components'
 import { ASSIGNMENT, COURSE } from '../../constants/images'
+
 import { CustomModal, Footer, Header } from '../../UI'
 import styles from './styles.module.css'
 
 const Dashboard = () => {
+
+  
   return (
     <React.Fragment>
       <Header />
@@ -30,7 +33,7 @@ const Dashboard = () => {
         </Grid>
         <Grid item xs={3}>
           <Box className={styles.info_nav}>
-            <Link to="" className={styles.link}>
+            <Link to="course" className={styles.link}>
               <DescriptionIcon />
               <Typography>Courses</Typography>
             </Link>

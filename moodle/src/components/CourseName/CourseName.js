@@ -6,16 +6,19 @@ import styles from './styles.module.css'
 
 const CourseName = ({ course }) => {
   const [open, setOpen] = useState(false)
+  const [courseId,setCourseId] = useState()
 
   const handleToggle = () => {
-    setOpen(!open)
+    setOpen(!open) 
+    setCourseId(course._id)
   }
 
+  console.log(courseId)
   return (
     <>
       <Grid container justifyContent='space-between'>
         <Grid item>
-          <Link to='course/:slug' className={styles.title}>
+          <Link to='' className={styles.title} >
             <Typography>{course.name}</Typography>
           </Link>
         </Grid>
