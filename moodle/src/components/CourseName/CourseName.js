@@ -15,7 +15,7 @@ const CourseName = ({ course }) => {
     <>
       <Grid container justifyContent='space-between'>
         <Grid item>
-          <Link to='course/:slug' className={styles.title}>
+          <Link to={`course/${course.slug}`} className={styles.title}>
             <Typography>{course.name}</Typography>
           </Link>
         </Grid>

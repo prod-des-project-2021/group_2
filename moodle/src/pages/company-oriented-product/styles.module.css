@@ -22,12 +22,13 @@
 
 .course_part {
   border-bottom: 1px solid #dee2e6;
+  margin: 10px 0;
 }
 
 .title {
-  padding: 10px;
-  font-size: 1.2rem;
-  font-weight: 600;
+  padding: 5px !important;
+  font-size: 1.2rem !important;
+  font-weight: 600 !important;
   color: #f7931e;
 }
 

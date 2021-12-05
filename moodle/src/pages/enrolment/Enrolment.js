@@ -20,10 +20,10 @@ const Enrollment = () => {
           <Link to='dashboard' className={styles.link}>
             Dashboard
           </Link>
-          <Link to={'/course'} className={styles.link}>
+          <Link to='dashboard' className={styles.link}>
             Course
           </Link>
-          <Link to='course/:slug' aria-current='page' className={styles.link}>
+          <Link to='course' aria-current='page' className={styles.link}>
             Company-Oriented Product Development Projects
           </Link>
         </Breadcrumbs>
@@ -54,11 +54,9 @@ const Enrollment = () => {
           </Box>
         </Box>
         <Box className={styles.btn_wrapper}>
-          <Link to='course/:slug'>
-            <Button variant='contained' className={styles.btn}>
-              Enrol
-            </Button>
-          </Link>
+          <Button variant='contained' className={styles.btn}>
+            Enrol
+          </Button>
         </Box>
       </Container>
       <Footer />

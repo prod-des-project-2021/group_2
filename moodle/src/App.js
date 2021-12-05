@@ -3,11 +3,13 @@ import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 import './App.css'
 import { ScrollToTopButton } from './components'
 import {
+  CompanyOriented,
   Course,
   Dashboard,
-  DetailCourse,
   Enrolment,
   Login,
+  MathPhysics,
+  MobileProject,
   Profile,
   Register,
 } from './pages'
@@ -36,8 +38,16 @@ function App() {
           {!authCtx.isLoggedIn && <Enrolment />}
           {authCtx.isLoggedIn && <Redirect to='/login' />}
         </Route>
-        <Route path='/course/:slug'>
-          {!authCtx.isLoggedIn && <DetailCourse />}
+        <Route path='/course/company-oriented-product'>
+          {!authCtx.isLoggedIn && <CompanyOriented />}
+          {authCtx.isLoggedIn && <Redirect to='/login' />}
+        </Route>
+        <Route path='/course/mobile-project'>
+          {!authCtx.isLoggedIn && <MobileProject />}
+          {authCtx.isLoggedIn && <Redirect to='/login' />}
+        </Route>
+        <Route path='/course/math-physics'>
+          {!authCtx.isLoggedIn && <MathPhysics />}
           {authCtx.isLoggedIn && <Redirect to='/login' />}
         </Route>
         <Route path='/course'>
