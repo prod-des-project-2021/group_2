@@ -29,6 +29,7 @@ export default function CourseTable({ searchTerm }) {
 
     fetchData()
   }, [URL])
+  console.log(data)
   return (
     <Grid
       container

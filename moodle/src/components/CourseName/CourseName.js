@@ -6,19 +6,23 @@ import styles from './styles.module.css'
 
 const CourseName = ({ course }) => {
   const [open, setOpen] = useState(false)
-  const [courseId,setCourseId] = useState()
+  const [courseId, setCourseId] = useState()
 
   const handleToggle = () => {
-    setOpen(!open) 
+    setOpen(!open)
     setCourseId(course._id)
   }
 
-  console.log(courseId)
+  const handleToggle1 = () => {
+    console.log()
+  }
+
+  console.log(course._id)
   return (
     <>
-      <Grid container justifyContent='space-between'>
+      <Grid container justifyContent="space-between">
         <Grid item>
-          <Link to='' className={styles.title} >
+          <Link to={`/course/${course._id}`} className={styles.title}>
             <Typography>{course.name}</Typography>
           </Link>
         </Grid>
@@ -31,7 +35,7 @@ const CourseName = ({ course }) => {
 
       {open && (
         <Grid item xs={12}>
-          <Grid container direction='row' spacing={3}>
+          <Grid container direction="row" spacing={3}>
             <Grid item>
               <Typography className={styles.teacher}>Teacher</Typography>
             </Grid>
