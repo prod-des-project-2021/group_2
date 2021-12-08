@@ -58,7 +58,7 @@ const DetailCourse = () => {
             <Link to={'/course'} className={styles.link}>
               <Typography> Course</Typography>
             </Link>
-            <Link to="course/:slug" aria-current="page" className={styles.link}>
+            <Link to="" aria-current="page" className={styles.link}>
              {courseName}
             </Link>
           </Breadcrumbs>
