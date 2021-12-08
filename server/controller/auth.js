@@ -59,7 +59,7 @@ const register = (req, res, next) => {
 const login = (req, res, next) => {
   var email = req.body.email
   var password = req.body.password
-
+    
   User.findOne({ email: email }).then((user) => {
     if (user) {
       bcrypt.compare(password, user.password, (err, result) => {
@@ -68,16 +68,17 @@ const login = (req, res, next) => {
             error: err,
           })
         } else if (result) {
-          let returnSecureToken = jwt.sign(
+          let idToken = jwt.sign(
             { name: user.name },
             process.env.SECRET,
             { expiresIn: '30min' },
           )
           res.json({
             message: 'Login Successful',
+            id: user.id,
             name: user.name,
             email: user.email,
-            returnSecureToken,
+            idToken,
           })
         } else {
           res.json({

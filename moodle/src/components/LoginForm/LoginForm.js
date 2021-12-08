@@ -23,7 +23,7 @@ const LoginForm = () => {
     event.preventDefault()
     const enteredEmail = emailInputRef.current.value
     const enteredPassword = passwordInputRef.current.value
-    console.log(enteredEmail, enteredPassword)
+
     axios({
       method: 'post',
       url: `${process.env.REACT_APP_URL}login`,
@@ -38,23 +38,6 @@ const LoginForm = () => {
       .catch((err) => {
         console.log(err)
       })
-    // .then((res) => {
-    //   if (res.ok) {
-    //     console.log(res)
-    //     return res.json({ msg: 'Login successfully' })
-    //   } else {
-    //     return res.json().then((data) => {
-    //       let errorMessage = 'Authentication failed!'
-    //       // if (data && data.error && data.error.message) {
-    //       //   errorMessage = data.error.message;
-    //       // }
-    //       throw new Error(errorMessage)
-    //     })
-    //   }
-    // })
-    // .catch((err) => {
-    //   alert(err.message)
-    // })
   }
 
   if (authCtx.isLoggedIn) {
