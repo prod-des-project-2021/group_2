@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const courseController = require('../controller/course')
-const authController = require('../controller/auth')
+
 
 
 
