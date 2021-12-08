@@ -10,7 +10,7 @@ export default function CourseTable({ searchTerm }) {
   const [isError, setIsError] = useState(false)
 
   const URL = `${process.env.REACT_APP_URL}courses`
-  
+
   useEffect(() => {
     const fetchData = async () => {
       setIsError(false)
@@ -29,7 +29,7 @@ export default function CourseTable({ searchTerm }) {
 
     fetchData()
   }, [URL])
-  console.log(data)
+
   return (
     <Grid
       container
@@ -52,7 +52,7 @@ export default function CourseTable({ searchTerm }) {
               return val
             }
           })
-            .map((val, key) => {
+          .map((val, key) => {
             return (
               <Grid
                 item

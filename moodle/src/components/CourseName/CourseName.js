@@ -6,18 +6,11 @@ import styles from './styles.module.css'
 
 const CourseName = ({ course }) => {
   const [open, setOpen] = useState(false)
-  const [courseId, setCourseId] = useState()
 
   const handleToggle = () => {
     setOpen(!open)
-    setCourseId(course._id)
   }
 
-  const handleToggle1 = () => {
-    console.log()
-  }
-
-  console.log(course._id)
   return (
     <>
       <Grid container justifyContent="space-between">
