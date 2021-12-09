@@ -1,15 +1,15 @@
 import { Avatar, Breadcrumbs, Container, Grid, Typography } from '@mui/material'
 import { Box } from '@mui/system'
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import AuthContext from '../../store/auth-context'
 import { CustomButton } from '../../UI'
 import styles from './styles.module.css'
-import AuthContext from '../../store/auth-context'
 const Profile = () => {
   const authCtx = useContext(AuthContext)
   console.log(authCtx)
   const { id, name, email } = authCtx.userInfo.userInfo
-  console.log( id , name , email)
+  console.log(id, name, email)
   const handleClick = (event) => {
     event.preventDefault()
   }
@@ -17,23 +17,23 @@ const Profile = () => {
     <Container>
       <Grid
         container
-        direction="row"
-        justifyContent="space-between"
-        alignItems="center"
+        direction='row'
+        justifyContent='space-between'
+        alignItems='center'
         spacing={2}
       >
         <Grid item>
           <Grid
             container
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
+            direction='row'
+            justifyContent='space-between'
+            alignItems='center'
             spacing={2}
           >
             <Grid item>
               <Avatar
-                alt="picture profile"
-                src="/static/images/avatar/1.jpg"
+                alt='picture profile'
+                src='/static/images/avatar/1.jpg'
                 sx={{ width: 80, height: 80 }}
               />
             </Grid>
@@ -60,20 +60,20 @@ const Profile = () => {
         </Grid>
       </Grid>
       <Box
-        role="presentation"
+        role='presentation'
         onClick={handleClick}
         className={styles.wrapper_link}
       >
-        <Breadcrumbs aria-label="breadcrumb">
-          <Link to="/">Dashboard</Link>
-          <Link to="/">Profile</Link>
+        <Breadcrumbs aria-label='breadcrumb'>
+          <Link to='/'>Dashboard</Link>
+          <Link to='/'>Profile</Link>
         </Breadcrumbs>
       </Box>
       <Grid
         container
-        direction="row"
-        justifyContent="space-between"
-        alignItems="center"
+        direction='row'
+        justifyContent='space-between'
+        alignItems='center'
         className={styles.container_info}
       >
         <Grid item xs>
@@ -117,7 +117,7 @@ const Profile = () => {
               <CustomButton>View QR Code</CustomButton>
             </div>
             <Typography>This site has mobile app access enabled.</Typography>
-            <a href="#">Download the mobile app.</a>
+            <a href='#'>Download the mobile app.</a>
           </Box>
         </Grid>
       </Grid>

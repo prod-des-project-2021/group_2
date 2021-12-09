@@ -1,11 +1,12 @@
 import { Breadcrumbs, Container, Typography } from '@mui/material'
 import { Box } from '@mui/system'
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
 import { Footer, Header } from '../../UI'
 import styles from './styles.module.css'
-import { useParams } from 'react-router'
-import axios from 'axios'
+
 const DetailCourse = () => {
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(false)
@@ -31,7 +32,7 @@ const DetailCourse = () => {
 
     fetchData()
   }, [URL])
-    let courseName = data.result
+  let courseName = data.result
   if (courseName == undefined) {
     return 'Loading'
   } else {
@@ -47,9 +48,7 @@ const DetailCourse = () => {
       ) : (
         <Container className={styles.container}>
           <Box>
-            <Typography className={styles.course_name}>
-             {courseName}
-            </Typography>
+            <Typography className={styles.course_name}>{courseName}</Typography>
           </Box>
           <Breadcrumbs className={styles.breadcrums_wrapper}>
             <Link to={'/dashboard'} className={styles.link}>
@@ -58,8 +57,8 @@ const DetailCourse = () => {
             <Link to={'/course'} className={styles.link}>
               <Typography> Course</Typography>
             </Link>
-            <Link to="" aria-current="page" className={styles.link}>
-             {courseName}
+            <Link to='' aria-current='page' className={styles.link}>
+              {courseName}
             </Link>
           </Breadcrumbs>
           <Box className={styles.course_content}>
