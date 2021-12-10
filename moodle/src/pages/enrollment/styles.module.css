@@ -1,0 +1,58 @@
+.container {
+  margin: 40px 0;
+}
+
+.course_name {
+  color: #fff;
+  width: fit-content;
+  padding: 10px;
+  font-size: 2rem;
+  font-weight: 600;
+  background-color: #af6108;
+}
+
+.breadcrums_wrapper {
+  margin: 20px 0;
+}
+
+.link {
+  text-decoration: none !important;
+  color: #f7931e;
+}
+
+.enrolment_options {
+  margin: 20px 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.course_info {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.course_title {
+  color: #6f7680;
+}
+
+.course_content {
+  color: #e49133 !important;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.btn_wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.btn {
+  color: #fff;
+  background-color: #f7931e;
+}
+
+.btn:hover {
+  background-color: #f7931e;
+}

@@ -1,12 +1,21 @@
 import { Breadcrumbs, Container, TextField } from '@mui/material'
+import { withStyles } from '@mui/styles'
 import { Box } from '@mui/system'
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { CourseTable } from '../../components'
 import { CustomButton, Footer, Header } from '../../UI'
 import styles from './styles.module.css'
 
-const Course = () => {
+const style = {
+  notchedOutline: {
+    borderWidth: '1px',
+    borderColor: '#f7931e !important',
+  },
+}
+
+const Course = ({ classes }) => {
+  const [searchTerm, setSearchTerm] = useState('')
   return (
     <>
       <Header />
@@ -21,7 +30,17 @@ const Course = () => {
         </Breadcrumbs>
         <Box>
           <form className={styles.form}>
-            <TextField className={styles.input}></TextField>
+            <TextField
+              type='text'
+              placeholder='Search...'
+              onChange={(event) => setSearchTerm(event.target.value)}
+              className={styles.input}
+              InputProps={{
+                classes: {
+                  notchedOutline: classes.notchedOutline,
+                },
+              }}
+            ></TextField>
             <Box className={styles.wrapper_button}>
               <CustomButton
                 fullWidth
@@ -33,11 +52,11 @@ const Course = () => {
             </Box>
           </form>
         </Box>
-        <CourseTable></CourseTable>
+        <CourseTable searchTerm={searchTerm}></CourseTable>
       </Container>
       <Footer />
     </>
   )
 }
 
-export default Course
+export default withStyles(style)(Course)

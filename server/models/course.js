@@ -7,18 +7,14 @@ const courseSchema = new Schema({
         type: String,
         required: true
     },
-    teachers: {
-        type: Number,
+    teacher: {
+        type: Array,
         required: true
     },
-    favorite: {
-        type: Boolean,
-        required: false
-    },
-    enrollment_code: {
+    code: {
         type: String,
         required: true
     }
-}, { timestamps: true })
+})
 
 module.exports = mongoose.model('Course', courseSchema);

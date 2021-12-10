@@ -1,6 +1,7 @@
 import InfoIcon from '@mui/icons-material/Info'
 import { Button, Grid, Typography } from '@mui/material'
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import styles from './styles.module.css'
 
 const CourseName = ({ course }) => {
@@ -12,9 +13,11 @@ const CourseName = ({ course }) => {
 
   return (
     <>
-      <Grid container justifyContent='space-between'>
+      <Grid container justifyContent="space-between">
         <Grid item>
-          <Typography className={styles.title}>{course.name}</Typography>
+          <Link to={`/course/${course._id}`} className={styles.title}>
+            <Typography>{course.name}</Typography>
+          </Link>
         </Grid>
         <Grid item>
           <Button className={styles.info_btn} onClick={handleToggle}>
@@ -25,7 +28,7 @@ const CourseName = ({ course }) => {
 
       {open && (
         <Grid item xs={12}>
-          <Grid container direction='row' spacing={3}>
+          <Grid container direction="row" spacing={3}>
             <Grid item>
               <Typography className={styles.teacher}>Teacher</Typography>
             </Grid>

@@ -30,7 +30,7 @@ const Dashboard = () => {
         </Grid>
         <Grid item xs={3}>
           <Box className={styles.info_nav}>
-            <Link to='' className={styles.link}>
+            <Link to='course' className={styles.link}>
               <DescriptionIcon />
               <Typography>Courses</Typography>
             </Link>

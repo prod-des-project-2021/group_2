@@ -1,10 +1,15 @@
 import { Avatar, Breadcrumbs, Container, Grid, Typography } from '@mui/material'
 import { Box } from '@mui/system'
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import AuthContext from '../../store/auth-context'
 import { CustomButton } from '../../UI'
 import styles from './styles.module.css'
-const Profile = ({ email }) => {
+const Profile = () => {
+  const authCtx = useContext(AuthContext)
+  console.log(authCtx)
+  const { id, name, email } = authCtx.userInfo.userInfo
+  console.log(id, name, email)
   const handleClick = (event) => {
     event.preventDefault()
   }
@@ -33,7 +38,7 @@ const Profile = ({ email }) => {
               />
             </Grid>
             <Grid item>
-              <Typography className={styles.name}>Ha Quyen</Typography>
+              <Typography className={styles.name}>{name}</Typography>
             </Grid>
           </Grid>
         </Grid>
@@ -76,7 +81,7 @@ const Profile = ({ email }) => {
             <Typography className={styles.title}>User details</Typography>
             <Typography className={styles.info_title}>Email address</Typography>
             <a href={`mailto:${email}`} className={styles.email}>
-              a{email}
+              {email}
             </a>
           </Box>
           <Box className={styles.wrapper_info}>

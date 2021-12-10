@@ -1,74 +1,70 @@
 import { Grid } from '@mui/material'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { CourseName } from '../index'
 import styles from './styles.module.css'
+import axios from 'axios'
 
-const data = [
-  {
-    name: 'Company-Oriented Product Development Projects',
-    teacher: ['Lasse Haverinen', 'Janne Kumpuoja'],
-    code: 'T771010D',
-  },
-  {
-    name: 'Mobile Project (autumn 2021)',
-    teacher: ['Jouni Juntunen', 'Pekka Ojala', 'Jussi Väisänen'],
-    code: 'IT00CJ06',
-  },
-  {
-    name: 'Music Theory 3',
-    teacher: ['Janne Mikkonen'],
-    code: 'MA00BT22',
-  },
-  {
-    name: 'Engine Testing KTO19SP3',
-    teacher: ['Janne Ilomaki'],
-    code: 'TK00CX86',
-  },
-  {
-    name: 'Production Automation',
-    teacher: [
-      'Elina Bergroth',
-      'Juha Junttila',
-      'Petri Junttila',
-      'Jyri-Jussi Torvinen',
-      'Jari Viitala',
-    ],
-    code: 'TK00BP66',
-  },
-  {
-    name: 'Work Community Skills (BIO, OPT, STH)',
-    teacher: ['Merja Suomalainen'],
-    code: 'YY00BH05',
-  },
-  {
-    name: 'Basics of Mathematics and Physics DIN21SP',
-    teacher: ['Jaakko Kaski', 'Susanna Kujanpää'],
-    code: 'ID00CS33',
-  },
-  {
-    name: 'Technical Drawing and Building Modelling',
-    teacher: ['Ari Oikarinen', 'Jussi Puumalainen'],
-  },
-]
+export default function CourseTable({ searchTerm }) {
+  const [data, setData] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [isError, setIsError] = useState(false)
 
-export default function CourseTable() {
+  const URL = `${process.env.REACT_APP_URL}courses`
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsError(false)
+      setIsLoading(true)
+
+      try {
+        const result = await axios(URL)
+
+        setData(result.data)
+      } catch (error) {
+        setIsError(true)
+      }
+
+      setIsLoading(false)
+    }
+
+    fetchData()
+  }, [URL])
+
   return (
     <Grid
       container
-      direction='row'
-      justifyContent='space-between'
-      alignItems='center'
+      direction="row"
+      justifyContent="space-between"
+      alignItems="center"
     >
-      {data.map((row, index) => (
-        <Grid
-          item
-          xs={12}
-          key={`course-name-${index}`}
-          className={styles.course_container}
-        >
-          <CourseName course={row}></CourseName>
-        </Grid>
-      ))}
+      {isError && <div>Something went wrong ...</div>}
+
+      {isLoading ? (
+        <div>Loading ...</div>
+      ) : (
+        data.course
+          ?.filter((val) => {
+            if (searchTerm === '') {
+              return val
+            } else if (
+              val.name.toLowerCase().includes(searchTerm.toLowerCase())
+            ) {
+              return val
+            }
+          })
+          .map((val, key) => {
+            return (
+              <Grid
+                item
+                xs={12}
+                key={`course-name-${key}`}
+                className={styles.course_container}
+              >
+                <CourseName course={val}></CourseName>
+              </Grid>
+            )
+          })
+      )}
     </Grid>
   )
 }
