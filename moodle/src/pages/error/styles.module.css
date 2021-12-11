@@ -1,0 +1,11 @@
+.error {
+  height: 80vh;
+}
+
+.error p {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #f7931e;
+  text-align: center;
+  padding: 30px 0;
+}
