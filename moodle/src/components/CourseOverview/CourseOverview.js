@@ -10,17 +10,23 @@ import {
   Typography,
 } from '@mui/material'
 import { Box } from '@mui/system'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { CourseItem } from '..'
 import styles from './styles.module.css'
+import axios from 'axios'
+const CourseOverview = ({ courses }) => {
+  const [data, setData] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [isError, setIsError] = useState(false)
 
-const CourseOverview = ({courses}) => {
   const [anchorElTime, setAnchorElTime] = useState(null)
   const [anchorElName, setAnchorElName] = useState(null)
 
   const openTime = Boolean(anchorElTime)
 
   const openName = Boolean(anchorElName)
+
+  
 
   const handleClickTime = (event) => {
     setAnchorElTime(event.currentTarget)
@@ -43,14 +49,14 @@ const CourseOverview = ({courses}) => {
       </Box>
       <Grid
         container
-        direction='row'
-        justifyContent='space-between'
-        alignItems='center'
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
       >
         <Grid item>
           <Button
             className={styles.buttons}
-            variant='outlined'
+            variant="outlined"
             aria-haspopup={true}
             aria-expanded={openTime ? true : undefined}
             disableElevation
@@ -79,8 +85,8 @@ const CourseOverview = ({courses}) => {
         <Grid item>
           <Button
             className={styles.buttons}
-            variant='outlined'
-            aria-haspopup='true'
+            variant="outlined"
+            aria-haspopup="true"
             aria-expanded={openName ? 'true' : undefined}
             disableElevation
             onClick={handleClickName}
@@ -101,18 +107,28 @@ const CourseOverview = ({courses}) => {
       </Grid>
       <Grid
         container
-        direction='row'
-        justifyContent='center'
-        alignItems='center'
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
         spacing={2}
         className={styles.courses_wrapper}
       >
-        {courses?.map((course) => (
-          <Grid item xs={4}>
-          <CourseItem course={course} key={course._id}></CourseItem>
-        </Grid>
-       ))}          
         
+        {/* {setTimeout(() => {
+          console.log(courses)
+          courses?.map((course) => (
+             <Grid item xs={4}>
+              <CourseItem course={course} key={course._id}></CourseItem>
+            </Grid>
+          ))
+        }, courses ,1000)} */}
+        {/* {courses?.map(async (course) => {
+          return (
+            <Grid item xs={4}>
+              <CourseItem course={course} key={course._id}></CourseItem>
+            </Grid>
+          )
+        })} */}
       </Grid>
     </Box>
   )
