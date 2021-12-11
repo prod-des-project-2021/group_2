@@ -7,18 +7,18 @@ import { Link } from 'react-router-dom'
 import { Progress } from '../index'
 import styles from './styles.module.css'
 
-const CourseItem = () => {
+const CourseItem = (props) => {
   const [touched, setTouched] = useState(false)
   const iconHandler = () => {
     setTouched(!touched)
   }
-
+console.log(props.course)
   return (
     <Card className={styles.course_container}>
       <Grid
         container
         direction='row'
-        justifyContent='space-between'
+        justifyContent='flex-start'
         alignItems='center'
       >
         <Grid item>
@@ -28,7 +28,7 @@ const CourseItem = () => {
         </Grid>
         <Grid item>
           <IconButton className={styles.button_favorite} onClick={iconHandler}>
-            {!touched && <StarBorderIcon className={styles.icon_withborder} />}
+            {!touched && <StarBorderIcon className={styles.icon_withborder} />}  
             {touched && (
               <StarOutlinedIcon className={styles.icon_filledborder} />
             )}
@@ -45,7 +45,7 @@ const CourseItem = () => {
       />
 
       <Link to='' className={styles.course_name}>
-        <Typography>Company-Oriented Product Development Projects</Typography>
+        <Typography>{props.course.name}</Typography>
       </Link>
 
       <Box>

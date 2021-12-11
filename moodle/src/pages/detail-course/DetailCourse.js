@@ -35,7 +35,7 @@ const DetailCourse = () => {
 
     fetchData()
   }, [URL])
-  const userId = authCtx.userInfo.userInfo.id
+  const userId = localStorage.getItem('userId')
   const submitHandler = (event) => {
     event.preventDefault()
     console.log(userId)

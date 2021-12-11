@@ -64,8 +64,8 @@ function App() {
         <Route path="/register">
           <Register />
         </Route>
-        <Route path="*">
-          <Redirect to="/" />
+        <Route path="*">          
+          <Redirect to="/" /> 
         </Route>
       </Switch>
       <ScrollToTopButton />

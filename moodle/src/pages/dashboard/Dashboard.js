@@ -19,7 +19,6 @@ const Dashboard = () => {
 
   const userId = localStorage.getItem('userId')
   const idToken = localStorage.getItem('token')
-  console.log(userId, idToken)
   const URL = `${process.env.REACT_APP_URL}users/${userId}`
   
   useEffect(() => {
@@ -45,7 +44,8 @@ const Dashboard = () => {
     fetchData()
   }, [URL])
  
-  const name = data.result.name
+  const name = data?.result?.name || 'Loading'
+  const courses = data?.result?.courses || 'Loading'
  
   return (
     <React.Fragment>
@@ -61,7 +61,7 @@ const Dashboard = () => {
         <Grid item xs={9}>
           <Container>
             <Timeline />
-            <CourseOverview />
+            <CourseOverview courses={courses} />
           </Container>
         </Grid>
         <Grid item xs={3}>

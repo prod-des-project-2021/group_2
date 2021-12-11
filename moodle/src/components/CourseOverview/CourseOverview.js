@@ -14,7 +14,7 @@ import React, { useState } from 'react'
 import { CourseItem } from '..'
 import styles from './styles.module.css'
 
-const CourseOverview = () => {
+const CourseOverview = ({courses}) => {
   const [anchorElTime, setAnchorElTime] = useState(null)
   const [anchorElName, setAnchorElName] = useState(null)
 
@@ -35,6 +35,7 @@ const CourseOverview = () => {
   const handleCloseName = () => {
     setAnchorElName(null)
   }
+  console.log(courses)
   return (
     <Box className={styles.course_container}>
       <Box>
@@ -106,15 +107,12 @@ const CourseOverview = () => {
         spacing={2}
         className={styles.courses_wrapper}
       >
-        <Grid item xs={4}>
-          <CourseItem></CourseItem>
+        {courses?.map((course) => (
+          <Grid item xs={4}>
+          <CourseItem course={course} key={course._id}></CourseItem>
         </Grid>
-        <Grid item xs={4}>
-          <CourseItem></CourseItem>
-        </Grid>
-        <Grid item xs={4}>
-          <CourseItem></CourseItem>
-        </Grid>
+       ))}          
+        
       </Grid>
     </Box>
   )
