@@ -18,19 +18,19 @@ const LoginForm = () => {
   const authCtx = useContext(AuthContext)
   const emailInputRef = useRef()
   const passwordInputRef = useRef()
-  // const [errorMessage, setErrorMessage] = useState('')
-  // // let isError = false
+  const [errorMessage, setErrorMessage] = useState('')
+  let isError = false
 
   const loginHandler = (event) => {
-    // setErrorMessage('')
+    setErrorMessage('')
     event.preventDefault()
     const enteredEmail = emailInputRef.current.value
     const enteredPassword = passwordInputRef.current.value
 
-    // if (!enteredEmail.match(/^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/)) {
-    //   isError = true
-    //   setErrorMessage('Invalid email')
-    // }
+    if (!enteredEmail.match(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/)) {
+      isError = true
+      setErrorMessage('Invalid email')
+    }
 
    
       axios({
@@ -65,8 +65,8 @@ const LoginForm = () => {
             variant='outlined'
             type='email'
             inputRef={emailInputRef}
-            // error={!!errorMessage}
-            // helperText={errorMessage && errorMessage}
+            error={!!errorMessage}
+            helperText={errorMessage && errorMessage}
           ></TextField>
         </Box>
 
