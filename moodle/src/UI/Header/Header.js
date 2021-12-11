@@ -76,11 +76,11 @@ export default function Header(props) {
   const [clicked, setClicked] = React.useState(false)
 
   const isMenuOpen = Boolean(anchorEl)
- 
-const handleProfileMenuOpen = (event) => {
+
+  const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget)
   }
-  
+
   const handleMenuClose = () => {
     setAnchorEl(null)
   }
@@ -95,8 +95,6 @@ const handleProfileMenuOpen = (event) => {
   const clickedMenuHandler = () => {
     setClicked(!clicked)
   }
-  
-
 
   const menuId = 'primary-search-account-menu'
   const renderMenu = (
@@ -111,7 +109,9 @@ const handleProfileMenuOpen = (event) => {
       }}
     >
       <MenuItem onClick={handleMenuClose} style={{ justifyContent: 'center' }}>
-       {props.name}
+        <Link to='/profile' className={styles.link}>
+          {props.name}
+        </Link>
       </MenuItem>
       <Divider sx={{ my: 0.5 }} />
       <MenuItem onClick={handleMenuClose} type='submit'>
@@ -120,8 +120,7 @@ const handleProfileMenuOpen = (event) => {
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
         <PersonIcon className={styles.padding_right} />
-        <Link to='profile' className={styles.link}>Credentials</Link>
-        
+        Credentials
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
         <BuildIcon className={styles.padding_right} />
@@ -167,14 +166,14 @@ const handleProfileMenuOpen = (event) => {
             {!clicked && <MenuIcon style={{ color: mainColor }} />}
             {clicked && <CloseIcon style={{ color: mainColor }} />}
           </IconButton>
-          <Link to='/'> 
-          <Box className={styles.logo_wrapper}>
-            <img
-              className={styles.logo}
-              src='https://idp.oamk.fi/idp/images/logo_vari_300dpi_EN.jpg'
-              alt='oamk logo'
-            />
-          </Box>
+          <Link to='/'>
+            <Box className={styles.logo_wrapper}>
+              <img
+                className={styles.logo}
+                src='https://idp.oamk.fi/idp/images/logo_vari_300dpi_EN.jpg'
+                alt='oamk logo'
+              />
+            </Box>
           </Link>
 
           <IconButton

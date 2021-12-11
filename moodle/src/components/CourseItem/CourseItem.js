@@ -12,7 +12,6 @@ const CourseItem = (props) => {
   const iconHandler = () => {
     setTouched(!touched)
   }
-console.log(props.course)
   return (
     <Card className={styles.course_container}>
       <Grid
@@ -22,29 +21,33 @@ console.log(props.course)
         alignItems='center'
       >
         <Grid item>
-          <Link to='' className={styles.course_code}>
+          <Link
+            to={`/course/${props.course._id}`}
+            className={styles.course_code}
+          >
             <Typography>MATH.MA.420</Typography>
           </Link>
         </Grid>
         <Grid item>
           <IconButton className={styles.button_favorite} onClick={iconHandler}>
-            {!touched && <StarBorderIcon className={styles.icon_withborder} />}  
+            {!touched && <StarBorderIcon className={styles.icon_withborder} />}
             {touched && (
               <StarOutlinedIcon className={styles.icon_filledborder} />
             )}
           </IconButton>
         </Grid>
       </Grid>
+      <Link to={`/course/${props.course._id}`}>
+        <CardMedia
+          component='img'
+          height='120'
+          image='https://moodle.oulu.fi/theme/image.php/snap/core/1630669960/u/f1'
+          color='grey'
+          alt='course img'
+        />
+      </Link>
 
-      <CardMedia
-        component='img'
-        height='120'
-        image='https://moodle.oulu.fi/theme/image.php/snap/core/1630669960/u/f1'
-        color='grey'
-        alt='course img'
-      />
-
-      <Link to='' className={styles.course_name}>
+      <Link to={`/course/${props.course._id}`} className={styles.course_name}>
         <Typography>{props.course.name}</Typography>
       </Link>
 

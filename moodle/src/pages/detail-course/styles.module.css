@@ -34,3 +34,26 @@
 .content_wrapper {
   padding: 20px;
 }
+
+.enroll_message {
+  font-size: 20px;
+  color: #fff;
+  background-color: green;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.btn_wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.btn {
+  color: #fff;
+  background-color: #f7931e !important;
+}
+
+.btn:hover {
+  background-color: #f7931e !important;
+}
