@@ -45,7 +45,7 @@ const Dashboard = () => {
     fetchData()
   }, [URL])
  
-  const name = data.result.name
+  const name = data?.result?.name || 'Loading'
  
   return (
     <React.Fragment>
