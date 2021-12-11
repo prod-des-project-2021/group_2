@@ -1,8 +1,8 @@
 import { Grid } from '@mui/material'
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { CourseName } from '../index'
 import styles from './styles.module.css'
-import axios from 'axios'
 
 export default function CourseTable({ searchTerm }) {
   const [data, setData] = useState([])
@@ -33,9 +33,9 @@ export default function CourseTable({ searchTerm }) {
   return (
     <Grid
       container
-      direction="row"
-      justifyContent="space-between"
-      alignItems="center"
+      direction='row'
+      justifyContent='space-between'
+      alignItems='center'
     >
       {isError && <div>Something went wrong ...</div>}
 
@@ -51,6 +51,7 @@ export default function CourseTable({ searchTerm }) {
             ) {
               return val
             }
+            return null
           })
           .map((val, key) => {
             return (

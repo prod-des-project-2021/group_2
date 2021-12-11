@@ -1,5 +1,6 @@
 .course_container {
   box-shadow: none !important;
+  text-decoration: none;
 }
 
 .course_code {

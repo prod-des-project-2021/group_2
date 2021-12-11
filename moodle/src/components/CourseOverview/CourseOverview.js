@@ -10,8 +10,13 @@ import {
   Typography,
 } from '@mui/material'
 import { Box } from '@mui/system'
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react'
 import { CourseItem } from '..'
+=======
+import React, { useState } from 'react'
+import { CourseItem } from '../index'
+>>>>>>> 9d4fb2e4270013302dbcb96661ba2b0a689bf4fc
 import styles from './styles.module.css'
 import axios from 'axios'
 const CourseOverview = ({ courses }) => {
@@ -19,6 +24,10 @@ const CourseOverview = ({ courses }) => {
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
 
+<<<<<<< HEAD
+=======
+const CourseOverview = ({ courses }) => {
+>>>>>>> 9d4fb2e4270013302dbcb96661ba2b0a689bf4fc
   const [anchorElTime, setAnchorElTime] = useState(null)
   const [anchorElName, setAnchorElName] = useState(null)
 
@@ -41,7 +50,25 @@ const CourseOverview = ({ courses }) => {
   const handleCloseName = () => {
     setAnchorElName(null)
   }
-  console.log(courses)
+
+  function GetCourse() {
+    return (
+      <Grid
+        container
+        direction='row'
+        justifyContent='flex-start'
+        alignItems='center'
+        spacing={2}
+        className={styles.courses_wrapper}
+      >
+        {courses?.map((course) => (
+          <Grid item xs={4} key={course?._id}>
+            <CourseItem course={course} />
+          </Grid>
+        ))}
+      </Grid>
+    )
+  }
   return (
     <Box className={styles.course_container}>
       <Box>
@@ -105,31 +132,7 @@ const CourseOverview = ({ courses }) => {
           </Menu>
         </Grid>
       </Grid>
-      <Grid
-        container
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
-        spacing={2}
-        className={styles.courses_wrapper}
-      >
-        
-        {/* {setTimeout(() => {
-          console.log(courses)
-          courses?.map((course) => (
-             <Grid item xs={4}>
-              <CourseItem course={course} key={course._id}></CourseItem>
-            </Grid>
-          ))
-        }, courses ,1000)} */}
-        {/* {courses?.map(async (course) => {
-          return (
-            <Grid item xs={4}>
-              <CourseItem course={course} key={course._id}></CourseItem>
-            </Grid>
-          )
-        })} */}
-      </Grid>
+      {courses !== 'Loading' && <GetCourse />}
     </Box>
   )
 }
