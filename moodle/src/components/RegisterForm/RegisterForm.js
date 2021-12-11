@@ -27,7 +27,7 @@ const RegisterForm = () => {
       isError = true
       setErrorMessage({ name: 'Your name is too short' })
     }
-    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(enteredEmail)) {
+    if (!/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test(enteredEmail)) {
       isError = true
       setErrorMessage({ email: 'Invalid email' })
     }
