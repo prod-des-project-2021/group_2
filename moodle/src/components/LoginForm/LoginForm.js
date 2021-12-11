@@ -27,7 +27,7 @@ const LoginForm = () => {
     const enteredEmail = emailInputRef.current.value
     const enteredPassword = passwordInputRef.current.value
 
-    if (!enteredEmail.match(/^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/)) {
+    if (!enteredEmail.match(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/)) {
       isError = true
       setErrorMessage('Invalid email')
     }
