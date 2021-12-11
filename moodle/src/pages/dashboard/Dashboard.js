@@ -3,53 +3,41 @@ import HelpIcon from '@mui/icons-material/Help'
 import SchoolIcon from '@mui/icons-material/School'
 import { Container, Grid, Typography } from '@mui/material'
 import { Box } from '@mui/system'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { CourseOverview, Timeline } from '../../components'
 import { ASSIGNMENT, COURSE } from '../../constants/images'
 import { CustomModal, Footer, Header } from '../../UI'
 import styles from './styles.module.css'
 import axios from 'axios'
-import AuthContext from '../../store/auth-context'
 
 const Dashboard = () => {
   const [data, setData] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-  const [isError, setIsError] = useState(false)
 
   const userId = localStorage.getItem('userId')
   const idToken = localStorage.getItem('token')
   const URL = `${process.env.REACT_APP_URL}users/${userId}`
-  
+
   useEffect(() => {
     const fetchData = async () => {
-      setIsError(false)
-      setIsLoading(true)
-
       try {
         const userInfo = await axios(URL, {
           headers: {
             Authorization: 'Bearer ' + idToken,
           },
         })
-
         setData(userInfo.data)
-      } catch (error) {
-        setIsError(true)
-      }
-
-      setIsLoading(false)
+      } catch (error) {}
     }
-
     fetchData()
   }, [URL])
- 
+
   const name = data?.result?.name || 'Loading'
   const courses = data?.result?.courses || 'Loading'
- 
+
   return (
     <React.Fragment>
-      <Header name={name}/>
+      <Header name={name} />
       <Container>
         <Box
           className={styles.background}
@@ -111,7 +99,7 @@ const Dashboard = () => {
           </Box>
         </Grid>
       </Grid>
-      <Footer name={name}/>
+      <Footer name={name} />
     </React.Fragment>
   )
 }

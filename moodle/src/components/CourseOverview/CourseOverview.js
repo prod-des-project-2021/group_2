@@ -15,12 +15,16 @@ import { CourseItem } from '../index'
 import styles from './styles.module.css'
 
 const CourseOverview = ({ courses }) => {
+  
+
   const [anchorElTime, setAnchorElTime] = useState(null)
   const [anchorElName, setAnchorElName] = useState(null)
 
   const openTime = Boolean(anchorElTime)
 
   const openName = Boolean(anchorElName)
+
+  
 
   const handleClickTime = (event) => {
     setAnchorElTime(event.currentTarget)
@@ -61,14 +65,14 @@ const CourseOverview = ({ courses }) => {
       </Box>
       <Grid
         container
-        direction='row'
-        justifyContent='space-between'
-        alignItems='center'
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
       >
         <Grid item>
           <Button
             className={styles.buttons}
-            variant='outlined'
+            variant="outlined"
             aria-haspopup={true}
             aria-expanded={openTime ? true : undefined}
             disableElevation
@@ -97,8 +101,8 @@ const CourseOverview = ({ courses }) => {
         <Grid item>
           <Button
             className={styles.buttons}
-            variant='outlined'
-            aria-haspopup='true'
+            variant="outlined"
+            aria-haspopup="true"
             aria-expanded={openName ? 'true' : undefined}
             disableElevation
             onClick={handleClickName}
