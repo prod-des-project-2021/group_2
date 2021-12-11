@@ -167,6 +167,7 @@ export default function Header() {
             {!clicked && <MenuIcon style={{ color: mainColor }} />}
             {clicked && <CloseIcon style={{ color: mainColor }} />}
           </IconButton>
+          <Link to='/'> 
           <Box className={styles.logo_wrapper}>
             <img
               className={styles.logo}
@@ -174,6 +175,7 @@ export default function Header() {
               alt='oamk logo'
             />
           </Box>
+          </Link>
 
           <IconButton
             size='large'
