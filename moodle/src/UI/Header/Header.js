@@ -68,7 +68,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }))
 
-export default function Header() {
+export default function Header(props) {
   const history = useHistory()
   const authCtx = useContext(AuthContext)
   const mainColor = '#F7931E'
@@ -76,11 +76,11 @@ export default function Header() {
   const [clicked, setClicked] = React.useState(false)
 
   const isMenuOpen = Boolean(anchorEl)
-  const {name} = authCtx.userInfo.userInfo
-  const handleProfileMenuOpen = (event) => {
+ 
+const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget)
   }
-
+  
   const handleMenuClose = () => {
     setAnchorEl(null)
   }
@@ -111,7 +111,7 @@ export default function Header() {
       }}
     >
       <MenuItem onClick={handleMenuClose} style={{ justifyContent: 'center' }}>
-       {name}
+       {props.name}
       </MenuItem>
       <Divider sx={{ my: 0.5 }} />
       <MenuItem onClick={handleMenuClose} type='submit'>

@@ -42,7 +42,8 @@ const LoginForm = () => {
         },
       })
         .then((res) => {
-          authCtx.login(res.data.idToken, res.data)
+          console.log(res.data)
+          authCtx.login(res.data.idToken, res.data.id)
         })
         .catch((err) => {
           console.log(err)
@@ -53,6 +54,7 @@ const LoginForm = () => {
   if (authCtx.isLoggedIn) {
     history.replace('/')
   }
+ 
   return (
     <Box className={styles.login_container}>
       <Typography className={styles.title}>Sign in to Moodle</Typography>
