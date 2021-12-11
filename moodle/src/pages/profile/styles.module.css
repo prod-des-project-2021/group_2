@@ -1,6 +1,15 @@
+.container {
+  padding: 20px auto;
+}
+
 .name {
   font-weight: 600;
   font-size: 2rem;
+}
+
+.link {
+  text-decoration: none !important;
+  color: #f7931e;
 }
 
 .wrapper_button [class*='MuiButton-root'] {

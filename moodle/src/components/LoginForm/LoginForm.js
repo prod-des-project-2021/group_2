@@ -19,7 +19,6 @@ const LoginForm = () => {
   const emailInputRef = useRef()
   const passwordInputRef = useRef()
   const [errorMessage, setErrorMessage] = useState('')
-  let isError = false
 
   const loginHandler = (event) => {
     setErrorMessage('')
@@ -28,33 +27,30 @@ const LoginForm = () => {
     const enteredPassword = passwordInputRef.current.value
 
     if (!enteredEmail.match(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/)) {
-      isError = true
       setErrorMessage('Invalid email')
     }
 
-   
-      axios({
-        method: 'post',
-        url: `${process.env.REACT_APP_URL}login`,
-        data: {
-          email: enteredEmail,
-          password: enteredPassword,
-        },
+    axios({
+      method: 'post',
+      url: `${process.env.REACT_APP_URL}login`,
+      data: {
+        email: enteredEmail,
+        password: enteredPassword,
+      },
+    })
+      .then((res) => {
+        console.log(res.data)
+        authCtx.login(res.data.idToken, res.data.id)
       })
-        .then((res) => {
-          console.log(res.data)
-          authCtx.login(res.data.idToken, res.data.id)
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-    
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   if (authCtx.isLoggedIn) {
     history.replace('/')
   }
- 
+
   return (
     <Box className={styles.login_container}>
       <Typography className={styles.title}>Sign in to Moodle</Typography>

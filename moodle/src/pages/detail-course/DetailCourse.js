@@ -1,19 +1,17 @@
-import { Breadcrumbs, Container, Typography, Button } from '@mui/material'
+import { Breadcrumbs, Button, Container, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useContext } from 'react'
 import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
-import AuthContext from '../../store/auth-context'
 import { Footer, Header } from '../../UI'
 import styles from './styles.module.css'
 
 const DetailCourse = () => {
-  const authCtx = useContext(AuthContext)
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
+  const [isEnrollMessage, setIsEnrollMessage] = useState('')
 
   const params = useParams()
   const URL = `${process.env.REACT_APP_URL}courses/${params.courseId}`
@@ -38,22 +36,20 @@ const DetailCourse = () => {
   const userId = localStorage.getItem('userId')
   const submitHandler = (event) => {
     event.preventDefault()
-    console.log(userId)
-    console.log(params)
-     axios({
-        method: 'put',
-        url: `${process.env.REACT_APP_URL}users/${userId}/${params.courseId}/enrolling`,
+    axios({
+      method: 'put',
+      url: `${process.env.REACT_APP_URL}users/${userId}/${params.courseId}/enrolling`,
+    })
+      .then((res) => {
+        setIsEnrollMessage(res?.data?.mes)
       })
-        .then((res) => {
-         console.log(res.data)
-        })
-        .catch((err) => {
-          console.log(err)
-        })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   let courseName = data.result
-  if (courseName == undefined) {
+  if (courseName === undefined) {
     return 'Loading'
   } else {
     courseName = data.result.name
@@ -80,7 +76,7 @@ const DetailCourse = () => {
               <Link to={'/course'} className={styles.link}>
                 <Typography> Course</Typography>
               </Link>
-              <Link to="" aria-current="page" className={styles.link}>
+              <Link to='' aria-current='page' className={styles.link}>
                 {courseName}
               </Link>
             </Breadcrumbs>
@@ -105,7 +101,24 @@ const DetailCourse = () => {
                   <Typography>This is the FAQ </Typography>
                 </Box>
               </Box>
-              <Button type="submit">Enroll</Button>
+
+              <Box className={styles.btn_wrapper}>
+                <Button
+                  type='submit'
+                  variant='contained'
+                  className={styles.btn}
+                >
+                  Enroll
+                </Button>
+              </Box>
+
+              {isEnrollMessage !== '' && (
+                <Box className={styles.btn_wrapper}>
+                  <Typography className={styles.enroll_message}>
+                    {isEnrollMessage}!
+                  </Typography>
+                </Box>
+              )}
             </Box>
           </form>
         </Container>
