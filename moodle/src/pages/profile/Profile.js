@@ -1,18 +1,34 @@
 import { Avatar, Breadcrumbs, Container, Grid, Typography } from '@mui/material'
 import { Box } from '@mui/system'
-import React, { useContext } from 'react'
+import React, { useEffect,useState } from 'react'
 import { Link } from 'react-router-dom'
-import AuthContext from '../../store/auth-context'
 import { CustomButton, Footer, Header } from '../../UI'
 import styles from './styles.module.css'
+import axios from 'axios'
 
 const Profile = () => {
-  const authCtx = useContext(AuthContext)
-  console.log(authCtx)
-  const { name, email } = authCtx?.userInfo?.userInfo || {}
-  const handleClick = (event) => {
-    event.preventDefault()
-  }
+   const [data, setData] = useState([])
+
+  const userId = localStorage.getItem('userId')
+  const idToken = localStorage.getItem('token')
+  const URL = `${process.env.REACT_APP_URL}users/${userId}`
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const userInfo = await axios(URL, {
+          headers: {
+            Authorization: 'Bearer ' + idToken,
+          },
+        })
+        setData(userInfo.data)
+      } catch (error) {}
+    }
+    fetchData()
+  }, [URL])
+  console.log(data)
+   const name = data?.result?.name || 'Loading'
+   const email = data?.result?.email || 'Loading'
   return (
     <>
       <Header />
@@ -40,7 +56,9 @@ const Profile = () => {
                 />
               </Grid>
               <Grid item>
-                <Typography className={styles.name}>{name}</Typography>
+                <Typography className={styles.name}>
+                  {name}
+                </Typography>
               </Grid>
             </Grid>
           </Grid>
@@ -63,7 +81,7 @@ const Profile = () => {
         </Grid>
         <Box
           role='presentation'
-          onClick={handleClick}
+       
           className={styles.wrapper_link}
         >
           <Breadcrumbs aria-label='breadcrumb'>

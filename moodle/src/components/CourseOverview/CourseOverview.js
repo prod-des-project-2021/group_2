@@ -10,24 +10,13 @@ import {
   Typography,
 } from '@mui/material'
 import { Box } from '@mui/system'
-<<<<<<< HEAD
-import React, { useState, useEffect } from 'react'
-import { CourseItem } from '..'
-=======
 import React, { useState } from 'react'
 import { CourseItem } from '../index'
->>>>>>> 9d4fb2e4270013302dbcb96661ba2b0a689bf4fc
 import styles from './styles.module.css'
-import axios from 'axios'
-const CourseOverview = ({ courses }) => {
-  const [data, setData] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-  const [isError, setIsError] = useState(false)
 
-<<<<<<< HEAD
-=======
 const CourseOverview = ({ courses }) => {
->>>>>>> 9d4fb2e4270013302dbcb96661ba2b0a689bf4fc
+  
+
   const [anchorElTime, setAnchorElTime] = useState(null)
   const [anchorElName, setAnchorElName] = useState(null)
 

@@ -13,8 +13,6 @@ import axios from 'axios'
 
 const Dashboard = () => {
   const [data, setData] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-  const [isError, setIsError] = useState(false)
 
   const userId = localStorage.getItem('userId')
   const idToken = localStorage.getItem('token')
@@ -22,24 +20,15 @@ const Dashboard = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsError(false)
-      setIsLoading(true)
-
       try {
         const userInfo = await axios(URL, {
           headers: {
             Authorization: 'Bearer ' + idToken,
           },
         })
-
         setData(userInfo.data)
-      } catch (error) {
-        setIsError(true)
-      }
-
-      setIsLoading(false)
+      } catch (error) {}
     }
-
     fetchData()
   }, [URL])
 
