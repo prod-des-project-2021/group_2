@@ -46,11 +46,11 @@ function App() {
           {authCtx.isLoggedIn && <CompanyOriented />}
           {!authCtx.isLoggedIn && <Redirect to='/login' />}
         </Route>
-        <Route path='/mobile-project'>
+        <Route path='/mobile-project-(autumn-2021)'>
           {authCtx.isLoggedIn && <MobileProject />}
           {!authCtx.isLoggedIn && <Redirect to='/login' />}
         </Route>
-        <Route path='/basics-of-mathematics-and-physics'>
+        <Route path='/basics-of-mathematics-and-physics-din21sp'>
           {authCtx.isLoggedIn && <MathPhysics />}
           {!authCtx.isLoggedIn && <Redirect to='/login' />}
         </Route>
