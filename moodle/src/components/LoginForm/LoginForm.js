@@ -39,18 +39,21 @@ const LoginForm = () => {
       },
     })
       .then((res) => {
-        console.log(res.data)
-        authCtx.login(res.data.idToken, res.data.id)
+        console.log(res)
+        // authCtx.login(res.data.idToken, res.data.id)
+        if (res.data.message === 'Password does not match') {
+          alert(res.data.message)
+        } else {
+          authCtx.login(res.data.idToken, res.data.id)
+          history.push('/')
+        }
       })
       .catch((err) => {
         console.log(err)
       })
   }
 
-  if (authCtx.isLoggedIn) {
-    history.replace('/')
-  }
-
+  
   return (
     <Box className={styles.login_container}>
       <Typography className={styles.title}>Sign in to Moodle</Typography>
