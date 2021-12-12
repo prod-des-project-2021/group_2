@@ -3,7 +3,7 @@ import { Box } from '@mui/system'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Footer, Header } from '../../UI'
-import styles from '../company-oriented-product/styles.module.css'
+import styles from '../company-oriented-product-development-projects/styles.module.css'
 
 const MobileProject = () => {
   return (
