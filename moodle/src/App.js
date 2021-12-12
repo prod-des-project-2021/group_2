@@ -42,17 +42,17 @@ function App() {
         <Route path='/course/:courseId'>
           <DetailCourse />
         </Route>
-        <Route path='/course/company-oriented-product'>
-          {!authCtx.isLoggedIn && <CompanyOriented />}
-          {authCtx.isLoggedIn && <Redirect to='/login' />}
+        <Route path='/company-oriented-product-development-projects'>
+          {authCtx.isLoggedIn && <CompanyOriented />}
+          {!authCtx.isLoggedIn && <Redirect to='/login' />}
         </Route>
-        <Route path='/course/mobile-project'>
-          {!authCtx.isLoggedIn && <MobileProject />}
-          {authCtx.isLoggedIn && <Redirect to='/login' />}
+        <Route path='/mobile-project'>
+          {authCtx.isLoggedIn && <MobileProject />}
+          {!authCtx.isLoggedIn && <Redirect to='/login' />}
         </Route>
-        <Route path='/course/math-physics'>
-          {!authCtx.isLoggedIn && <MathPhysics />}
-          {authCtx.isLoggedIn && <Redirect to='/login' />}
+        <Route path='/basics-of-mathematics-and-physics'>
+          {authCtx.isLoggedIn && <MathPhysics />}
+          {!authCtx.isLoggedIn && <Redirect to='/login' />}
         </Route>
         <Route path='/course'>
           {authCtx.isLoggedIn && <Course />}

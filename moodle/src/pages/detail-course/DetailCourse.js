@@ -49,6 +49,8 @@ const DetailCourse = () => {
   }
 
   let courseName = data.result
+  console.log(courseName)
+
   if (courseName === undefined) {
     return 'Loading'
   } else {

@@ -12,6 +12,7 @@ const CourseItem = (props) => {
   const iconHandler = () => {
     setTouched(!touched)
   }
+  const courseLink = props.course.name.toLowerCase().replaceAll(' ', '-')
   return (
     <Card className={styles.course_container}>
       <Grid
@@ -21,10 +22,7 @@ const CourseItem = (props) => {
         alignItems='center'
       >
         <Grid item>
-          <Link
-            to={`/course/${props.course._id}`}
-            className={styles.course_code}
-          >
+          <Link to={`/${courseLink}`} className={styles.course_code}>
             <Typography>MATH.MA.420</Typography>
           </Link>
         </Grid>
@@ -37,7 +35,7 @@ const CourseItem = (props) => {
           </IconButton>
         </Grid>
       </Grid>
-      <Link to={`/course/${props.course._id}`}>
+      <Link to={`/${courseLink}`}>
         <CardMedia
           component='img'
           height='120'
@@ -47,7 +45,7 @@ const CourseItem = (props) => {
         />
       </Link>
 
-      <Link to={`/course/${props.course._id}`} className={styles.course_name}>
+      <Link to={`/${courseLink}`} className={styles.course_name}>
         <Typography>{props.course.name}</Typography>
       </Link>
 
