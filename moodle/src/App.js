@@ -14,6 +14,7 @@ import {
   Register,
 } from './pages'
 import DetailCourse from './pages/detail-course/DetailCourse'
+import Error from './pages/error/Error'
 import AuthContext from './store/auth-context'
 
 function App() {
@@ -22,50 +23,50 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact>
+        <Route path='/' exact>
           {authCtx.isLoggedIn && (
-            <Route path="/">
+            <Route path='/'>
               <Dashboard />
             </Route>
           )}
-          {!authCtx.isLoggedIn && <Redirect to="/login" />}
+          {!authCtx.isLoggedIn && <Redirect to='/login' />}
         </Route>
         {!authCtx.isLoggedIn && (
-          <Route path="/login">
+          <Route path='/login'>
             <Login />
           </Route>
         )}
-        <Route path="/enroll">
+        <Route path='/enroll'>
           <Enrollment />
         </Route>
-        <Route path="/course/:courseId">
+        <Route path='/course/:courseId'>
           <DetailCourse />
         </Route>
-        <Route path="/course/company-oriented-product">
-          {!authCtx.isLoggedIn && <CompanyOriented />}
-          {authCtx.isLoggedIn && <Redirect to="/login" />}
+        <Route path='/company-oriented-product-development-projects'>
+          {authCtx.isLoggedIn && <CompanyOriented />}
+          {!authCtx.isLoggedIn && <Redirect to='/login' />}
         </Route>
-        <Route path="/course/mobile-project">
-          {!authCtx.isLoggedIn && <MobileProject />}
-          {authCtx.isLoggedIn && <Redirect to="/login" />}
+        <Route path='/mobile-project-(autumn-2021)'>
+          {authCtx.isLoggedIn && <MobileProject />}
+          {!authCtx.isLoggedIn && <Redirect to='/login' />}
         </Route>
-        <Route path="/course/math-physics">
-          {!authCtx.isLoggedIn && <MathPhysics />}
-          {authCtx.isLoggedIn && <Redirect to="/login" />}
+        <Route path='/basics-of-mathematics-and-physics-din21sp'>
+          {authCtx.isLoggedIn && <MathPhysics />}
+          {!authCtx.isLoggedIn && <Redirect to='/login' />}
         </Route>
-        <Route path="/course">
+        <Route path='/course'>
           {authCtx.isLoggedIn && <Course />}
-          {!authCtx.isLoggedIn && <Redirect to="/login" />}
+          {!authCtx.isLoggedIn && <Redirect to='/login' />}
         </Route>
-        <Route path="/profile">
+        <Route path='/profile'>
           {authCtx.isLoggedIn && <Profile />}
-          {!authCtx.isLoggedIn && <Redirect to="/login" />}
+          {!authCtx.isLoggedIn && <Redirect to='/login' />}
         </Route>
-        <Route path="/register">
+        <Route path='/register'>
           <Register />
         </Route>
-        <Route path="*">
-          <Redirect to="/" />
+        <Route path='*'>
+          <Error />
         </Route>
       </Switch>
       <ScrollToTopButton />

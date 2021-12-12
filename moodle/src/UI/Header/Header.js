@@ -68,7 +68,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }))
 
-export default function Header() {
+export default function Header(props) {
   const history = useHistory()
   const authCtx = useContext(AuthContext)
   const mainColor = '#F7931E'
@@ -76,7 +76,7 @@ export default function Header() {
   const [clicked, setClicked] = React.useState(false)
 
   const isMenuOpen = Boolean(anchorEl)
-  const {name} = authCtx.userInfo.userInfo
+
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget)
   }
@@ -95,8 +95,6 @@ export default function Header() {
   const clickedMenuHandler = () => {
     setClicked(!clicked)
   }
-  
-
 
   const menuId = 'primary-search-account-menu'
   const renderMenu = (
@@ -111,7 +109,9 @@ export default function Header() {
       }}
     >
       <MenuItem onClick={handleMenuClose} style={{ justifyContent: 'center' }}>
-       {name}
+        <Link to='/profile' className={styles.link}>
+          {props.name}
+        </Link>
       </MenuItem>
       <Divider sx={{ my: 0.5 }} />
       <MenuItem onClick={handleMenuClose} type='submit'>
@@ -120,8 +120,7 @@ export default function Header() {
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
         <PersonIcon className={styles.padding_right} />
-        <Link to='profile' className={styles.link}>Credentials</Link>
-        
+        Credentials
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
         <BuildIcon className={styles.padding_right} />
@@ -167,13 +166,15 @@ export default function Header() {
             {!clicked && <MenuIcon style={{ color: mainColor }} />}
             {clicked && <CloseIcon style={{ color: mainColor }} />}
           </IconButton>
-          <Box className={styles.logo_wrapper}>
-            <img
-              className={styles.logo}
-              src='https://idp.oamk.fi/idp/images/logo_vari_300dpi_EN.jpg'
-              alt='oamk logo'
-            />
-          </Box>
+          <Link to='/'>
+            <Box className={styles.logo_wrapper}>
+              <img
+                className={styles.logo}
+                src='https://idp.oamk.fi/idp/images/logo_vari_300dpi_EN.jpg'
+                alt='oamk logo'
+              />
+            </Box>
+          </Link>
 
           <IconButton
             size='large'

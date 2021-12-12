@@ -7,22 +7,22 @@ import { Link } from 'react-router-dom'
 import { Progress } from '../index'
 import styles from './styles.module.css'
 
-const CourseItem = () => {
+const CourseItem = (props) => {
   const [touched, setTouched] = useState(false)
   const iconHandler = () => {
     setTouched(!touched)
   }
-
+  const courseLink = props.course.name.toLowerCase().replaceAll(' ', '-')
   return (
     <Card className={styles.course_container}>
       <Grid
         container
         direction='row'
-        justifyContent='space-between'
+        justifyContent='flex-start'
         alignItems='center'
       >
         <Grid item>
-          <Link to='' className={styles.course_code}>
+          <Link to={`/${courseLink}`} className={styles.course_code}>
             <Typography>MATH.MA.420</Typography>
           </Link>
         </Grid>
@@ -35,17 +35,18 @@ const CourseItem = () => {
           </IconButton>
         </Grid>
       </Grid>
+      <Link to={`/${courseLink}`}>
+        <CardMedia
+          component='img'
+          height='120'
+          image='https://moodle.oulu.fi/theme/image.php/snap/core/1630669960/u/f1'
+          color='grey'
+          alt='course img'
+        />
+      </Link>
 
-      <CardMedia
-        component='img'
-        height='120'
-        image='https://moodle.oulu.fi/theme/image.php/snap/core/1630669960/u/f1'
-        color='grey'
-        alt='course img'
-      />
-
-      <Link to='' className={styles.course_name}>
-        <Typography>Company-Oriented Product Development Projects</Typography>
+      <Link to={`/${courseLink}`} className={styles.course_name}>
+        <Typography>{props.course.name}</Typography>
       </Link>
 
       <Box>

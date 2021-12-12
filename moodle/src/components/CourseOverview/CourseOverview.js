@@ -11,16 +11,20 @@ import {
 } from '@mui/material'
 import { Box } from '@mui/system'
 import React, { useState } from 'react'
-import { CourseItem } from '..'
+import { CourseItem } from '../index'
 import styles from './styles.module.css'
 
-const CourseOverview = () => {
+const CourseOverview = ({ courses }) => {
+  
+
   const [anchorElTime, setAnchorElTime] = useState(null)
   const [anchorElName, setAnchorElName] = useState(null)
 
   const openTime = Boolean(anchorElTime)
 
   const openName = Boolean(anchorElName)
+
+  
 
   const handleClickTime = (event) => {
     setAnchorElTime(event.currentTarget)
@@ -35,6 +39,25 @@ const CourseOverview = () => {
   const handleCloseName = () => {
     setAnchorElName(null)
   }
+
+  function GetCourse() {
+    return (
+      <Grid
+        container
+        direction='row'
+        justifyContent='flex-start'
+        alignItems='center'
+        spacing={2}
+        className={styles.courses_wrapper}
+      >
+        {courses?.map((course) => (
+          <Grid item xs={4} key={course?._id}>
+            <CourseItem course={course} />
+          </Grid>
+        ))}
+      </Grid>
+    )
+  }
   return (
     <Box className={styles.course_container}>
       <Box>
@@ -42,14 +65,14 @@ const CourseOverview = () => {
       </Box>
       <Grid
         container
-        direction='row'
-        justifyContent='space-between'
-        alignItems='center'
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
       >
         <Grid item>
           <Button
             className={styles.buttons}
-            variant='outlined'
+            variant="outlined"
             aria-haspopup={true}
             aria-expanded={openTime ? true : undefined}
             disableElevation
@@ -78,8 +101,8 @@ const CourseOverview = () => {
         <Grid item>
           <Button
             className={styles.buttons}
-            variant='outlined'
-            aria-haspopup='true'
+            variant="outlined"
+            aria-haspopup="true"
             aria-expanded={openName ? 'true' : undefined}
             disableElevation
             onClick={handleClickName}
@@ -98,24 +121,7 @@ const CourseOverview = () => {
           </Menu>
         </Grid>
       </Grid>
-      <Grid
-        container
-        direction='row'
-        justifyContent='center'
-        alignItems='center'
-        spacing={2}
-        className={styles.courses_wrapper}
-      >
-        <Grid item xs={4}>
-          <CourseItem></CourseItem>
-        </Grid>
-        <Grid item xs={4}>
-          <CourseItem></CourseItem>
-        </Grid>
-        <Grid item xs={4}>
-          <CourseItem></CourseItem>
-        </Grid>
-      </Grid>
+      {courses !== 'Loading' && <GetCourse />}
     </Box>
   )
 }
